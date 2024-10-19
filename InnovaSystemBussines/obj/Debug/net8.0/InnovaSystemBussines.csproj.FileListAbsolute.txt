@@ -1,0 +1,11 @@
+C:\Users\Harol\Desktop\ProyectoFinalBackend\InnovaSystemBussines\bin\Debug\net8.0\InnovaSystemBussines.deps.json
+C:\Users\Harol\Desktop\ProyectoFinalBackend\InnovaSystemBussines\bin\Debug\net8.0\InnovaSystemBussines.dll
+C:\Users\Harol\Desktop\ProyectoFinalBackend\InnovaSystemBussines\bin\Debug\net8.0\InnovaSystemBussines.pdb
+C:\Users\Harol\Desktop\ProyectoFinalBackend\InnovaSystemBussines\obj\Debug\net8.0\InnovaSystemBussines.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Harol\Desktop\ProyectoFinalBackend\InnovaSystemBussines\obj\Debug\net8.0\InnovaSystemBussines.AssemblyInfoInputs.cache
+C:\Users\Harol\Desktop\ProyectoFinalBackend\InnovaSystemBussines\obj\Debug\net8.0\InnovaSystemBussines.AssemblyInfo.cs
+C:\Users\Harol\Desktop\ProyectoFinalBackend\InnovaSystemBussines\obj\Debug\net8.0\InnovaSystemBussines.csproj.CoreCompileInputs.cache
+C:\Users\Harol\Desktop\ProyectoFinalBackend\InnovaSystemBussines\obj\Debug\net8.0\InnovaSystemBussines.dll
+C:\Users\Harol\Desktop\ProyectoFinalBackend\InnovaSystemBussines\obj\Debug\net8.0\refint\InnovaSystemBussines.dll
+C:\Users\Harol\Desktop\ProyectoFinalBackend\InnovaSystemBussines\obj\Debug\net8.0\InnovaSystemBussines.pdb
+C:\Users\Harol\Desktop\ProyectoFinalBackend\InnovaSystemBussines\obj\Debug\net8.0\ref\InnovaSystemBussines.dll
