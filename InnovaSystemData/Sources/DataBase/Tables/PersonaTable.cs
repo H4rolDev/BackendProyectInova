@@ -14,7 +14,6 @@ namespace InnovaSystemData.Sources.DataBase.Tables
         public string apellidos { get; set; }
         public string tipo_documento { get; set; }
         public string numero_documento { get; set; }
-        public string telefono { get; set; }
         public bool estado { get; set; }
 
         //public UsuarioTable? usuario { get; set;}

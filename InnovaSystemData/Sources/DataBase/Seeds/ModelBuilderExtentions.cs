@@ -36,7 +36,6 @@ namespace InnovaSystemData.Sources.DataBase.Seeds
                     apellidos = "Pérez",
                     tipo_documento = "DNI",
                     numero_documento = "12345678",
-                    telefono = "987654321",
                     estado = true
                 },
                 new PersonaTable
@@ -46,7 +45,6 @@ namespace InnovaSystemData.Sources.DataBase.Seeds
                     apellidos = "González",
                     tipo_documento = "DNI",
                     numero_documento = "87654321",
-                    telefono = "912345678",
                     estado = true
                 }
             );
@@ -226,7 +224,7 @@ namespace InnovaSystemData.Sources.DataBase.Seeds
                     modelo = "15-eh2021nr",
                     precioVenta = 3500.00m,
                     utilidadPrecioVenta = 500.00m,
-                    utilidadPorcentaje = "14.29%",
+                    utilidadPorcentaje = 14,
                     stock = 20,
                     garantia = 12, // meses
                     estado = true
@@ -242,7 +240,7 @@ namespace InnovaSystemData.Sources.DataBase.Seeds
                     modelo = "XPS 13 9310",
                     precioVenta = 4500.00m,
                     utilidadPrecioVenta = 600.00m,
-                    utilidadPorcentaje = "13.33%",
+                    utilidadPorcentaje = 13,
                     stock = 15,
                     garantia = 12, // meses
                     estado = true
@@ -258,7 +256,7 @@ namespace InnovaSystemData.Sources.DataBase.Seeds
                     modelo = "MX Master 3",
                     precioVenta = 150.00m,
                     utilidadPrecioVenta = 20.00m,
-                    utilidadPorcentaje = "13.33%",
+                    utilidadPorcentaje = 13,
                     stock = 50,
                     garantia = 24, // meses
                     estado = true
@@ -274,7 +272,7 @@ namespace InnovaSystemData.Sources.DataBase.Seeds
                     modelo = "BlackWidow V3",
                     precioVenta = 200.00m,
                     utilidadPrecioVenta = 30.00m,
-                    utilidadPorcentaje = "15.00%",
+                    utilidadPorcentaje = 15,
                     stock = 25,
                     garantia = 12, // meses
                     estado = true

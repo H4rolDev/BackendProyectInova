@@ -5,6 +5,7 @@ using InnovaSystemBussines.Auth.services;
 using InnovaSystemBussines.Errors;
 using InnovaSystemData.Sources.DataBase;
 using InnovaSystemData.Sources.DataBase.Tables;
+using InnovaSystemData.Utils;
 using Microsoft.Extensions.Logging;
 
 namespace InnovaSystemData.Auth.services{
@@ -19,7 +20,6 @@ namespace InnovaSystemData.Auth.services{
             _logger = logger;
         }
         public LoginResponse Login(LoginRequest login)
-
         {
             var user = _db.usuarios.Where(u=>u.Correo == login.email).FirstOrDefault();
             if(user == null){
@@ -41,21 +41,26 @@ namespace InnovaSystemData.Auth.services{
             ).Where(
                 (upr) => upr.u.Correo == login.email && upr.u.clave == login.password && upr.u.estado
             ).FirstOrDefault();
+
             if (userData == null){
                 throw new MessageExeption("cerdenciales incorrectas.");
             }
-            return new LoginResponse{
-                token = "dasnkldnas",
-                profile = new UserAppProfile{
-                    names = userData.p.nombres,
-                    LastName = userData.p.apellidos,
-                    Email = userData.u.Correo,
-                    Rol = new RolApp{
-                        name = userData.r.nombre,
-                        Id = userData.r.id
-                    }
+            var profile = new UserAppProfile {
+                Id = userData.u.id,
+                Names = userData.p.nombres,
+                LastName = userData.p.apellidos,
+                Email = userData.u.Correo,
+                Rol = new RolApp {
+                    name = userData.r.nombre,
+                    Id = userData.r.id
                 }
             };
+
+            return new LoginResponse {
+                token = JwtUtils.Encode(profile),
+                profile = profile,
+            };
+
             /* 
             var user = _db.usuario.Where(
                 (u) => u.correo == login.email && u.clave == login.password && u.Estado
@@ -77,7 +82,6 @@ namespace InnovaSystemData.Auth.services{
                 apellidos = data.apellidos,
                 tipo_documento = data.tipo_documento,
                 numero_documento = data.numero_documento,
-                telefono = "",
                 estado = true
             };
             _db.personas.Add(person);
@@ -100,10 +104,7 @@ namespace InnovaSystemData.Auth.services{
 
             _db.usuarios.Add(user);
             _db.SaveChanges();
-
         }
-
-    
         private static string GenerateSaltedHash(string passwordStr, string saltStr)
         {
             //var utf8 = new UTF8Encoding();
@@ -128,7 +129,6 @@ namespace InnovaSystemData.Auth.services{
             byte[] hashedPwd = algorithm.ComputeHash(plainTextWithSaltBytes);            
             return Convert.ToBase64String(hashedPwd);
         }
-
         private static string CreateSalt(int size = 64)
         {
             //Generate a cryptographic random number.
@@ -139,6 +139,5 @@ namespace InnovaSystemData.Auth.services{
             // Return a Base64 string representation of the random number.
             return Convert.ToBase64String(buff);
         }
-
     }
 }

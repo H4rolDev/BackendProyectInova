@@ -27,19 +27,19 @@ builder.Services.AddDbContext<InnovaDbContext>(
         connStr, b => b.MigrationsAssembly("InnovaSystem"))
 );
 
-string webFront = builder.Configuration.GetValue<string>("CORS:web");
-string webFront2 = builder.Configuration.GetValue<string>("CORS:web2");
+string web = builder.Configuration.GetValue<string>("CORS:web");
+string web2 = builder.Configuration.GetValue<string>("CORS:web2");
 
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowSpecificOrigin",
-        builder =>
-        {
-            builder.WithOrigins("http://localhost:4200")
-                .AllowAnyMethod()
-                .AllowAnyHeader();
-        });
-});
+builder.Services.AddCors(
+    (conf) => conf.AddDefaultPolicy( policy => 
+        policy.AllowAnyHeader()
+            .AllowAnyMethod()
+            .AllowAnyOrigin()
+            .WithMethods()
+            .WithOrigins(web, web2)
+    )
+);
+
 
 builder.Services.AddScoped<IRolService, RolServiceDbImpl>();
 builder.Services.AddScoped<IRolRepository, RolRepositoryImpl>();
@@ -103,6 +103,6 @@ app.UseAuthorization();
         
 app.MapControllers();
 
-app.UseCors("AllowSpecificOrigin");
+app.UseCors();
 
 app.Run();

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InnovaSystem.Migrations
 {
     [DbContext(typeof(InnovaDbContext))]
-    [Migration("20241026024857_Initial")]
-    partial class Initial
+    [Migration("20241026151525_Initial11")]
+    partial class Initial11
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -611,15 +611,7 @@ namespace InnovaSystem.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
 
-                    b.Property<string>("apellidoMaterno")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("apellidoPaterno")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("correo")
+                    b.Property<string>("apellidos")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -630,7 +622,11 @@ namespace InnovaSystem.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("telefono")
+                    b.Property<string>("numero_documento")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("tipo_documento")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -642,22 +638,20 @@ namespace InnovaSystem.Migrations
                         new
                         {
                             id = 1,
-                            apellidoMaterno = "Lopez",
-                            apellidoPaterno = "Perez",
-                            correo = "juan.perez@example.com",
+                            apellidos = "Pérez",
                             estado = true,
                             nombres = "Juan",
-                            telefono = "123456789"
+                            numero_documento = "12345678",
+                            tipo_documento = "DNI"
                         },
                         new
                         {
                             id = 2,
-                            apellidoMaterno = "Diaz",
-                            apellidoPaterno = "Gomez",
-                            correo = "maria.gomez@example.com",
+                            apellidos = "González",
                             estado = true,
-                            nombres = "Maria",
-                            telefono = "987654321"
+                            nombres = "María",
+                            numero_documento = "87654321",
+                            tipo_documento = "DNI"
                         });
                 });
 
@@ -704,9 +698,8 @@ namespace InnovaSystem.Migrations
                     b.Property<int>("stock")
                         .HasColumnType("int");
 
-                    b.Property<string>("utilidadPorcentaje")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<decimal>("utilidadPorcentaje")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal>("utilidadPrecioVenta")
                         .HasColumnType("decimal(18,2)");
@@ -733,7 +726,7 @@ namespace InnovaSystem.Migrations
                             nombre = "HP Pavilion 15",
                             precioVenta = 3500.00m,
                             stock = 20,
-                            utilidadPorcentaje = "14.29%",
+                            utilidadPorcentaje = 14.29m,
                             utilidadPrecioVenta = 500.00m
                         },
                         new
@@ -749,7 +742,7 @@ namespace InnovaSystem.Migrations
                             nombre = "Dell XPS 13",
                             precioVenta = 4500.00m,
                             stock = 15,
-                            utilidadPorcentaje = "13.33%",
+                            utilidadPorcentaje = 13m,
                             utilidadPrecioVenta = 600.00m
                         },
                         new
@@ -765,7 +758,7 @@ namespace InnovaSystem.Migrations
                             nombre = "Logitech MX Master 3",
                             precioVenta = 150.00m,
                             stock = 50,
-                            utilidadPorcentaje = "13.33%",
+                            utilidadPorcentaje = 13m,
                             utilidadPrecioVenta = 20.00m
                         },
                         new
@@ -781,7 +774,7 @@ namespace InnovaSystem.Migrations
                             nombre = "Razer BlackWidow V3",
                             precioVenta = 200.00m,
                             stock = 25,
-                            utilidadPorcentaje = "15.00%",
+                            utilidadPorcentaje = 15m,
                             utilidadPrecioVenta = 30.00m
                         });
                 });

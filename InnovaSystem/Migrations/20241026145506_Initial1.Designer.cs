@@ -4,6 +4,7 @@ using InnovaSystemData.Sources.DataBase;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InnovaSystem.Migrations
 {
     [DbContext(typeof(InnovaDbContext))]
-    partial class InnovaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241026145506_Initial1")]
+    partial class Initial1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -695,8 +698,8 @@ namespace InnovaSystem.Migrations
                     b.Property<int>("stock")
                         .HasColumnType("int");
 
-                    b.Property<int>("utilidadPorcentaje")
-                        .HasColumnType("int");
+                    b.Property<decimal>("utilidadPorcentaje")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal>("utilidadPrecioVenta")
                         .HasColumnType("decimal(18,2)");
@@ -723,7 +726,7 @@ namespace InnovaSystem.Migrations
                             nombre = "HP Pavilion 15",
                             precioVenta = 3500.00m,
                             stock = 20,
-                            utilidadPorcentaje = 14,
+                            utilidadPorcentaje = 14.29m,
                             utilidadPrecioVenta = 500.00m
                         },
                         new
@@ -739,7 +742,7 @@ namespace InnovaSystem.Migrations
                             nombre = "Dell XPS 13",
                             precioVenta = 4500.00m,
                             stock = 15,
-                            utilidadPorcentaje = 13,
+                            utilidadPorcentaje = 13.33m,
                             utilidadPrecioVenta = 600.00m
                         },
                         new
@@ -755,7 +758,7 @@ namespace InnovaSystem.Migrations
                             nombre = "Logitech MX Master 3",
                             precioVenta = 150.00m,
                             stock = 50,
-                            utilidadPorcentaje = 13,
+                            utilidadPorcentaje = 13.33m,
                             utilidadPrecioVenta = 20.00m
                         },
                         new
@@ -771,7 +774,7 @@ namespace InnovaSystem.Migrations
                             nombre = "Razer BlackWidow V3",
                             precioVenta = 200.00m,
                             stock = 25,
-                            utilidadPorcentaje = 15,
+                            utilidadPorcentaje = 15.00m,
                             utilidadPrecioVenta = 30.00m
                         });
                 });

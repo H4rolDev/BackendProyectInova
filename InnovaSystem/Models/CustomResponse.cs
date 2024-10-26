@@ -19,3 +19,13 @@ namespace InnovaSystem.Models
         public object? Data { get; set; }
     }
 }
+
+/* 
+{
+  "email": "admin@admin.com",
+  "password": "Admin!12345",
+  "name": "admin",
+  "apellidos": "admin",
+  "tipo_documento": "DNI",
+  "numero_documento": "76040979"
+} */

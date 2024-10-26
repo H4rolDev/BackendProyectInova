@@ -145,4 +145,4 @@ C:\Users\Harol\Desktop\ProyectoFinalBackend\InnovaSystem\obj\Debug\net8.0\Innova
 C:\Users\Harol\Desktop\ProyectoFinalBackend\InnovaSystem\obj\Debug\net8.0\ref\InnovaSystem.dll
 C:\Users\Harol\Desktop\ProyectoFinalBackend\InnovaSystem\bin\Debug\net8.0\InnovaSystemBussines.dll
 C:\Users\Harol\Desktop\ProyectoFinalBackend\InnovaSystem\bin\Debug\net8.0\InnovaSystemBussines.pdb
-C:\Users\Harol\Desktop\ProyectoFinalBackend\InnovaSystem\obj\Debug\net8.0\InnovaSystem.sourcelink.json
+C:\Users\Harol\Desktop\ProyectoFinalBackend\InnovaSystem\bin\Debug\net8.0\Microsoft.Bcl.TimeProvider.dll

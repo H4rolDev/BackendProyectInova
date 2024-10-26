@@ -6,6 +6,5 @@ namespace InnovaSystemBussines.Auth.models{
         public string apellidos { get; set; }
         public string tipo_documento { get; set; }
         public string numero_documento { get; set; }
-        public string Telefono { get; set; }
     }
 }

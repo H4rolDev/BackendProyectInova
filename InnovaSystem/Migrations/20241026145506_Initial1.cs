@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace InnovaSystem.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class Initial1 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -99,10 +99,9 @@ namespace InnovaSystem.Migrations
                     id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     nombres = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    apellidoPaterno = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    apellidoMaterno = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    telefono = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    correo = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    apellidos = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    tipo_documento = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    numero_documento = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     estado = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
@@ -217,7 +216,7 @@ namespace InnovaSystem.Migrations
                     modelo = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
                     precioVenta = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     utilidadPrecioVenta = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    utilidadPorcentaje = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    utilidadPorcentaje = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     stock = table.Column<int>(type: "int", nullable: false),
                     garantia = table.Column<int>(type: "int", nullable: false),
                     estado = table.Column<bool>(type: "bit", nullable: false)
@@ -564,11 +563,11 @@ namespace InnovaSystem.Migrations
 
             migrationBuilder.InsertData(
                 table: "persona",
-                columns: new[] { "id", "apellidoMaterno", "apellidoPaterno", "correo", "estado", "nombres", "telefono" },
+                columns: new[] { "id", "apellidos", "estado", "nombres", "numero_documento", "tipo_documento" },
                 values: new object[,]
                 {
-                    { 1, "Lopez", "Perez", "juan.perez@example.com", true, "Juan", "123456789" },
-                    { 2, "Diaz", "Gomez", "maria.gomez@example.com", true, "Maria", "987654321" }
+                    { 1, "Pérez", true, "Juan", "12345678", "DNI" },
+                    { 2, "González", true, "María", "87654321", "DNI" }
                 });
 
             migrationBuilder.InsertData(
@@ -594,10 +593,10 @@ namespace InnovaSystem.Migrations
                 columns: new[] { "id", "descripcion", "estado", "garantia", "id_categoria", "id_marca", "imagen", "modelo", "nombre", "precioVenta", "stock", "utilidadPorcentaje", "utilidadPrecioVenta" },
                 values: new object[,]
                 {
-                    { 1, "Laptop HP Pavilion con procesador Intel Core i5 y 8GB de RAM.", true, 12, 1, 1, "hp_pavilion_15.jpg", "15-eh2021nr", "HP Pavilion 15", 3500.00m, 20, "14.29%", 500.00m },
-                    { 2, "Laptop Dell XPS 13 con pantalla InfinityEdge y procesador Intel Core i7.", true, 12, 1, 3, "dell_xps_13.jpg", "XPS 13 9310", "Dell XPS 13", 4500.00m, 15, "13.33%", 600.00m },
-                    { 3, "Mouse inalámbrico Logitech MX Master 3 con control preciso.", true, 24, 2, 2, "logitech_mx_master_3.jpg", "MX Master 3", "Logitech MX Master 3", 150.00m, 50, "13.33%", 20.00m },
-                    { 4, "Teclado mecánico Razer BlackWidow V3 con retroiluminación RGB.", true, 12, 3, 6, "razer_blackwidow_v3.jpg", "BlackWidow V3", "Razer BlackWidow V3", 200.00m, 25, "15.00%", 30.00m }
+                    { 1, "Laptop HP Pavilion con procesador Intel Core i5 y 8GB de RAM.", true, 12, 1, 1, "hp_pavilion_15.jpg", "15-eh2021nr", "HP Pavilion 15", 3500.00m, 20, 14.29m, 500.00m },
+                    { 2, "Laptop Dell XPS 13 con pantalla InfinityEdge y procesador Intel Core i7.", true, 12, 1, 3, "dell_xps_13.jpg", "XPS 13 9310", "Dell XPS 13", 4500.00m, 15, 13.33m, 600.00m },
+                    { 3, "Mouse inalámbrico Logitech MX Master 3 con control preciso.", true, 24, 2, 2, "logitech_mx_master_3.jpg", "MX Master 3", "Logitech MX Master 3", 150.00m, 50, 13.33m, 20.00m },
+                    { 4, "Teclado mecánico Razer BlackWidow V3 con retroiluminación RGB.", true, 12, 3, 6, "razer_blackwidow_v3.jpg", "BlackWidow V3", "Razer BlackWidow V3", 200.00m, 25, 15.00m, 30.00m }
                 });
 
             migrationBuilder.InsertData(

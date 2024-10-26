@@ -9,7 +9,7 @@ namespace InnovaSystemBussines.Store.Models{
         public string Modelo {get;set;} 
         public decimal PrecioVenta {get;set;}
         public decimal UtilidadPrecioVenta {get;set;}
-        public string UtilidadPorcentaje {get;set;}
+        public int UtilidadPorcentaje {get;set;}
         public int Stock {get;set;}
         public int Garantia {get;set;}
         public bool Estado {get;set;}
@@ -24,7 +24,7 @@ namespace InnovaSystemBussines.Store.Models{
         public string Modelo {get;set;}
         public decimal PrecioVenta {get;set;}
         public decimal UtilidadPrecioVenta {get;set;}
-        public string UtilidadPorcentaje {get;set;}
+        public int UtilidadPorcentaje {get;set;}
         public int Stock {get;set;}
         public int Garantia {get;set;}
         public static implicit operator Producto(ProductoBody rb) {
