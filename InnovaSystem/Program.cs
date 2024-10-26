@@ -1,5 +1,10 @@
+using InnovaSystemBussines.Auth.repositories;
+using InnovaSystemBussines.Auth.services;
+using InnovaSystemBussines.Store.Models;
 using InnovaSystemBussines.Store.Repositories;
 using InnovaSystemBussines.Store.Services;
+using InnovaSystemData.Auth.repositories;
+using InnovaSystemData.Auth.services;
 using InnovaSystemData.Sources.DataBase;
 using InnovaSystemData.Store.Repositories;
 using InnovaSystemData.Store.Services;
@@ -51,6 +56,9 @@ builder.Services.AddScoped<IOrdenServicioTecnicoRepository, OrdenServicioTecnico
 builder.Services.AddScoped<IClienteService, ClienteServiceDbImpl>();
 builder.Services.AddScoped<IClienteRepository, ClienteRepositoryImpl>();
 
+builder.Services.AddScoped<IClienteDireccionService, ClienteDireccionServiceDbImpl>();
+builder.Services.AddScoped<IClienteDireccionRepository, ClienteDireccionRepositoryImpl>();
+
 builder.Services.AddScoped<IMarcaService, MarcaServiceDbImpl>();
 builder.Services.AddScoped<IMarcaRepository, MarcaRepositoryImpl>();
 
@@ -59,6 +67,28 @@ builder.Services.AddScoped<ICategoriaRepository, CategoriaRepositoryImpl>();
 
 builder.Services.AddScoped<IProductoService, ProductoServiceDbImpl>();
 builder.Services.AddScoped<IProductoRepository, ProductoRepositoryImpl>();
+
+builder.Services.AddScoped<ICargoService, CargoServiceDbImpl>();
+builder.Services.AddScoped<ICargoRepository, CargoRepositoryImpl>();
+
+builder.Services.AddScoped<IDetalleVentaService, DetalleVentaServiceDbImpl>();
+builder.Services.AddScoped<IDetalleVentaRepository, DetalleVentaRepositoryImpl>();
+
+builder.Services.AddScoped<IDeliveryService, DeliveryServiceDbImpl>();
+builder.Services.AddScoped<IDeliveryRepository, DeliveryRepositoryImpl>();
+
+builder.Services.AddScoped<IUsuarioService, UsuarioServiceDbImpl>();
+builder.Services.AddScoped<IUsuarioRepository, UsuarioRepositoryImpl>();
+
+builder.Services.AddScoped<IVentaService, VentaServiceDbImpl>();
+builder.Services.AddScoped<IVentaRepository, VentaRepositoryImpl>();
+
+builder.Services.AddScoped<ITipoPagoService, TipoPagoServiceDbImpl>();
+builder.Services.AddScoped<ITipoPagoRepository, TipoPagoRepositoryImpl>();
+
+builder.Services.AddScoped<IAuthenticationRepository, AuthenticationRepositoryImpl>();
+builder.Services.AddScoped<IAuthenticationService, AuthenticactionServiceDbImpl>();
+
 var app = builder.Build();
 
 app.UseSwagger();

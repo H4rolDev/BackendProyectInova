@@ -7,6 +7,7 @@ namespace InnovaSystemData.Store.Extentions
     public static Trabajador ToModel(this TrabajadorTable rt) {
       return new Trabajador {
         Id = rt.id,
+        PersonaId = rt.id_Persona,
         Nombre = rt.nombres,
         ApellidoPaterno = rt.apellidoPaterno,
         ApellidoMaterno = rt.apellidoMaterno,

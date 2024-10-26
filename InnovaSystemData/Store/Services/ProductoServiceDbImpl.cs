@@ -62,10 +62,10 @@ namespace  InnovaSystemData.Store.Services {
             if (producto == null) throw new MessageExeption("No se encontro el Producto");
             producto.nombre = body.Nombre;
             producto.imagen = body.Imagen;
-            producto.categoria = body.Categoria;
+            producto.id_categoria = body.categoriaId;
             producto.descripcion = body.Descripcion;
-            producto.modelo = body.Descripcion;
-            producto.marca = body.Descripcion;
+            producto.modelo = body.Modelo;
+            producto.id_marca = body.MarcaId;
             producto.stock = body.Stock;
             producto.precioVenta = body.PrecioVenta;
             producto.utilidadPrecioVenta = body.UtilidadPrecioVenta;

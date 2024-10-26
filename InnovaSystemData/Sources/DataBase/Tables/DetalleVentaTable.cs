@@ -13,17 +13,17 @@ namespace InnovaSystemData.Sources.DataBase.Tables
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id { get; set; }
         [Required]
-        public int cantidad { get; set; }
-        [Required]
-        [Precision(7, 2)]
-        public decimal preioUnitario { get; set; }
-        [Required]
-        [Precision(7, 2)]
-        public decimal impuestos { get; set; }
-        [Required]
         public int id_producto{get;set;}
         [Required]
         public int id_venta {get;set;}
+        [Required]
+        [Precision(7, 2)]
+        public decimal precioUnitario { get; set; }
+        [Required]
+        public int cantidad { get; set; }
+        [Required]
+        [Precision(7, 2)]
+        public decimal impuestos { get; set; }
         [Required]
         public bool estado { get; set; }
     }

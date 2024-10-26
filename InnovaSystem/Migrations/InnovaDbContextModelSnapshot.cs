@@ -22,6 +22,59 @@ namespace InnovaSystem.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("InnovaSystemData.Sources.DataBase.Tables.CargoTable", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+
+                    b.Property<bool>("Estado")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("descripcion")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("nombre")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("salarioBase")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Cargo");
+
+                    b.HasData(
+                        new
+                        {
+                            id = 1,
+                            Estado = true,
+                            descripcion = "Encargado de la empresa.",
+                            nombre = "Gerente",
+                            salarioBase = 4000m
+                        },
+                        new
+                        {
+                            id = 2,
+                            Estado = true,
+                            descripcion = "Vende en tienda.",
+                            nombre = "Vendedor",
+                            salarioBase = 2000m
+                        },
+                        new
+                        {
+                            id = 3,
+                            Estado = true,
+                            descripcion = "Tecnico en computacion.",
+                            nombre = "Servicio Tecnico",
+                            salarioBase = 2000m
+                        });
+                });
+
             modelBuilder.Entity("InnovaSystemData.Sources.DataBase.Tables.CategoriaTable", b =>
                 {
                     b.Property<int>("id")
@@ -44,6 +97,29 @@ namespace InnovaSystem.Migrations
                     b.HasKey("id");
 
                     b.ToTable("categorias");
+
+                    b.HasData(
+                        new
+                        {
+                            id = 1,
+                            descripcion = "Todo tipo de computadoras, desde portátiles hasta de escritorio.",
+                            estado = true,
+                            nombre = "Computadoras"
+                        },
+                        new
+                        {
+                            id = 2,
+                            descripcion = "Accesorios y dispositivos periféricos para computadoras.",
+                            estado = true,
+                            nombre = "Periféricos"
+                        },
+                        new
+                        {
+                            id = 3,
+                            descripcion = "Componentes internos como tarjetas madre, procesadores, etc.",
+                            estado = true,
+                            nombre = "Componentes"
+                        });
                 });
 
             modelBuilder.Entity("InnovaSystemData.Sources.DataBase.Tables.ClienteDireccionTable", b =>
@@ -85,6 +161,38 @@ namespace InnovaSystem.Migrations
                     b.HasKey("id");
 
                     b.ToTable("clienteDireccion");
+
+                    b.HasData(
+                        new
+                        {
+                            id = 1,
+                            departamento = "Lima",
+                            direccion = "Av. José Larco 123",
+                            distrito = "Miraflores",
+                            estado = true,
+                            provincia = "Lima",
+                            referencia = "Frente al parque central"
+                        },
+                        new
+                        {
+                            id = 2,
+                            departamento = "Arequipa",
+                            direccion = "Jr. Tacna 456",
+                            distrito = "Arequipa",
+                            estado = true,
+                            provincia = "Arequipa",
+                            referencia = "Cerca a la plaza de armas"
+                        },
+                        new
+                        {
+                            id = 3,
+                            departamento = "Cusco",
+                            direccion = "Av. Los Incas 789",
+                            distrito = "Cusco",
+                            estado = true,
+                            provincia = "Cusco",
+                            referencia = "Cerca del colegio nacional"
+                        });
                 });
 
             modelBuilder.Entity("InnovaSystemData.Sources.DataBase.Tables.ClienteTable", b =>
@@ -105,32 +213,71 @@ namespace InnovaSystem.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<int>("NumeroDocumento")
+                        .HasColumnType("int");
+
                     b.Property<string>("RSocial")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TipoDocumento")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("correo")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<string>("direccion")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("documento")
-                        .HasColumnType("int");
-
                     b.Property<bool>("estado")
                         .HasColumnType("bit");
+
+                    b.Property<int>("id_Direccion")
+                        .HasColumnType("int");
+
+                    b.Property<int>("id_Persona")
+                        .HasColumnType("int");
 
                     b.Property<int>("telefono")
                         .HasColumnType("int");
 
                     b.HasKey("id");
 
+                    b.HasIndex("id_Direccion")
+                        .IsUnique();
+
+                    b.HasIndex("id_Persona")
+                        .IsUnique();
+
                     b.ToTable("clientes");
+
+                    b.HasData(
+                        new
+                        {
+                            id = 1,
+                            Apellidos = "Perez",
+                            Nombres = "Juan",
+                            NumeroDocumento = 12345678,
+                            RSocial = "Cliente 1",
+                            TipoDocumento = "DNI",
+                            correo = "juan.cliente@example.com",
+                            estado = true,
+                            id_Direccion = 1,
+                            id_Persona = 1,
+                            telefono = 123456789
+                        },
+                        new
+                        {
+                            id = 2,
+                            Apellidos = "Gomez",
+                            Nombres = "Maria",
+                            NumeroDocumento = 87654321,
+                            TipoDocumento = "DNI",
+                            correo = "maria.cliente@example.com",
+                            estado = true,
+                            id_Direccion = 2,
+                            id_Persona = 2,
+                            telefono = 987654321
+                        });
                 });
 
             modelBuilder.Entity("InnovaSystemData.Sources.DataBase.Tables.CompraTable", b =>
@@ -191,17 +338,17 @@ namespace InnovaSystem.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
-                    b.Property<string>("DNI")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("DNI")
+                        .HasColumnType("int");
 
                     b.Property<string>("Nombre")
                         .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
-                    b.Property<long>("Telefono")
-                        .HasColumnType("bigint");
+                    b.Property<string>("Telefono")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("estado")
                         .HasColumnType("bit");
@@ -209,15 +356,10 @@ namespace InnovaSystem.Migrations
                     b.Property<int>("id_direccion")
                         .HasColumnType("int");
 
-                    b.Property<int>("id_estado")
-                        .HasColumnType("int");
-
                     b.HasKey("id");
 
                     b.HasIndex("id_direccion")
                         .IsUnique();
-
-                    b.HasIndex("id_estado");
 
                     b.ToTable("delivery");
                 });
@@ -290,7 +432,7 @@ namespace InnovaSystem.Migrations
                         .HasPrecision(7, 2)
                         .HasColumnType("decimal(7,2)");
 
-                    b.Property<decimal>("preioUnitario")
+                    b.Property<decimal>("precioUnitario")
                         .HasPrecision(7, 2)
                         .HasColumnType("decimal(7,2)");
 
@@ -302,32 +444,6 @@ namespace InnovaSystem.Migrations
                         .IsUnique();
 
                     b.ToTable("detalleVenta");
-                });
-
-            modelBuilder.Entity("InnovaSystemData.Sources.DataBase.Tables.DocumentoTable", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
-
-                    b.Property<bool>("estado")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("longitudDocumento")
-                        .HasColumnType("int");
-
-                    b.Property<string>("nombre")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("nroDocumento")
-                        .HasColumnType("int");
-
-                    b.HasKey("id");
-
-                    b.ToTable("documentos");
                 });
 
             modelBuilder.Entity("InnovaSystemData.Sources.DataBase.Tables.EstadoTable", b =>
@@ -376,6 +492,64 @@ namespace InnovaSystem.Migrations
                     b.HasKey("id");
 
                     b.ToTable("marca");
+
+                    b.HasData(
+                        new
+                        {
+                            id = 1,
+                            descripcion = "Líder en computadoras portátiles y de escritorio.",
+                            estado = true,
+                            nombre = "HP"
+                        },
+                        new
+                        {
+                            id = 2,
+                            descripcion = "Famosa por sus periféricos como teclados y mouses.",
+                            estado = true,
+                            nombre = "Logitech"
+                        },
+                        new
+                        {
+                            id = 3,
+                            descripcion = "Reconocida por sus laptops y soluciones empresariales.",
+                            estado = true,
+                            nombre = "Dell"
+                        },
+                        new
+                        {
+                            id = 4,
+                            descripcion = "Conocida por sus computadoras y componentes de alto rendimiento.",
+                            estado = true,
+                            nombre = "Asus"
+                        },
+                        new
+                        {
+                            id = 5,
+                            descripcion = "Fabricante de computadoras y tecnología innovadora.",
+                            estado = true,
+                            nombre = "Acer"
+                        },
+                        new
+                        {
+                            id = 6,
+                            descripcion = "Marca premium en periféricos para gamers.",
+                            estado = true,
+                            nombre = "Razer"
+                        },
+                        new
+                        {
+                            id = 7,
+                            descripcion = "Conocida por sus productos de software y hardware, incluyendo teclados.",
+                            estado = true,
+                            nombre = "Microsoft"
+                        },
+                        new
+                        {
+                            id = 8,
+                            descripcion = "Reconocida por su tecnología innovadora y productos de alta gama.",
+                            estado = true,
+                            nombre = "Apple"
+                        });
                 });
 
             modelBuilder.Entity("InnovaSystemData.Sources.DataBase.Tables.OrdenServicioTecnicoTable", b =>
@@ -385,10 +559,6 @@ namespace InnovaSystem.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
-
-                    b.Property<string>("cliente")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("descripcionServicio")
                         .IsRequired()
@@ -409,19 +579,83 @@ namespace InnovaSystem.Migrations
                     b.Property<TimeSpan>("horaInicio")
                         .HasColumnType("time");
 
+                    b.Property<int>("id_Trabajador")
+                        .HasColumnType("int");
+
+                    b.Property<int>("id_cliente")
+                        .HasColumnType("int");
+
                     b.Property<decimal>("precioUnitario")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal>("total")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<string>("trabajador")
+                    b.HasKey("id");
+
+                    b.HasIndex("id_Trabajador");
+
+                    b.HasIndex("id_cliente");
+
+                    b.ToTable("ordenServicioTecnico");
+                });
+
+            modelBuilder.Entity("InnovaSystemData.Sources.DataBase.Tables.PersonaTable", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+
+                    b.Property<string>("apellidos")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("estado")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("nombres")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("numero_documento")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("telefono")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("tipo_documento")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("id");
 
-                    b.ToTable("ordenServicioTecnico");
+                    b.ToTable("persona");
+
+                    b.HasData(
+                        new
+                        {
+                            id = 1,
+                            apellidos = "Pérez",
+                            estado = true,
+                            nombres = "Juan",
+                            numero_documento = "12345678",
+                            telefono = "987654321",
+                            tipo_documento = "DNI"
+                        },
+                        new
+                        {
+                            id = 2,
+                            apellidos = "González",
+                            estado = true,
+                            nombres = "María",
+                            numero_documento = "87654321",
+                            telefono = "912345678",
+                            tipo_documento = "DNI"
+                        });
                 });
 
             modelBuilder.Entity("InnovaSystemData.Sources.DataBase.Tables.ProductoTable", b =>
@@ -431,10 +665,6 @@ namespace InnovaSystem.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
-
-                    b.Property<string>("categoria")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("descripcion")
                         .IsRequired()
@@ -447,13 +677,14 @@ namespace InnovaSystem.Migrations
                     b.Property<int>("garantia")
                         .HasColumnType("int");
 
+                    b.Property<int>("id_categoria")
+                        .HasColumnType("int");
+
+                    b.Property<int>("id_marca")
+                        .HasColumnType("int");
+
                     b.Property<string>("imagen")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("marca")
-                        .IsRequired()
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
 
                     b.Property<string>("modelo")
                         .IsRequired()
@@ -479,7 +710,77 @@ namespace InnovaSystem.Migrations
 
                     b.HasKey("id");
 
+                    b.HasIndex("id_categoria");
+
+                    b.HasIndex("id_marca");
+
                     b.ToTable("productos");
+
+                    b.HasData(
+                        new
+                        {
+                            id = 1,
+                            descripcion = "Laptop HP Pavilion con procesador Intel Core i5 y 8GB de RAM.",
+                            estado = true,
+                            garantia = 12,
+                            id_categoria = 1,
+                            id_marca = 1,
+                            imagen = "hp_pavilion_15.jpg",
+                            modelo = "15-eh2021nr",
+                            nombre = "HP Pavilion 15",
+                            precioVenta = 3500.00m,
+                            stock = 20,
+                            utilidadPorcentaje = "14.29%",
+                            utilidadPrecioVenta = 500.00m
+                        },
+                        new
+                        {
+                            id = 2,
+                            descripcion = "Laptop Dell XPS 13 con pantalla InfinityEdge y procesador Intel Core i7.",
+                            estado = true,
+                            garantia = 12,
+                            id_categoria = 1,
+                            id_marca = 3,
+                            imagen = "dell_xps_13.jpg",
+                            modelo = "XPS 13 9310",
+                            nombre = "Dell XPS 13",
+                            precioVenta = 4500.00m,
+                            stock = 15,
+                            utilidadPorcentaje = "13.33%",
+                            utilidadPrecioVenta = 600.00m
+                        },
+                        new
+                        {
+                            id = 3,
+                            descripcion = "Mouse inalámbrico Logitech MX Master 3 con control preciso.",
+                            estado = true,
+                            garantia = 24,
+                            id_categoria = 2,
+                            id_marca = 2,
+                            imagen = "logitech_mx_master_3.jpg",
+                            modelo = "MX Master 3",
+                            nombre = "Logitech MX Master 3",
+                            precioVenta = 150.00m,
+                            stock = 50,
+                            utilidadPorcentaje = "13.33%",
+                            utilidadPrecioVenta = 20.00m
+                        },
+                        new
+                        {
+                            id = 4,
+                            descripcion = "Teclado mecánico Razer BlackWidow V3 con retroiluminación RGB.",
+                            estado = true,
+                            garantia = 12,
+                            id_categoria = 3,
+                            id_marca = 6,
+                            imagen = "razer_blackwidow_v3.jpg",
+                            modelo = "BlackWidow V3",
+                            nombre = "Razer BlackWidow V3",
+                            precioVenta = 200.00m,
+                            stock = 25,
+                            utilidadPorcentaje = "15.00%",
+                            utilidadPrecioVenta = 30.00m
+                        });
                 });
 
             modelBuilder.Entity("InnovaSystemData.Sources.DataBase.Tables.ProveedorTable", b =>
@@ -587,6 +888,22 @@ namespace InnovaSystem.Migrations
                     b.HasKey("id");
 
                     b.ToTable("Rol");
+
+                    b.HasData(
+                        new
+                        {
+                            id = 1,
+                            descripcion = "Acceso total a todas las funcionalidades.",
+                            estado = true,
+                            nombre = "Administrador"
+                        },
+                        new
+                        {
+                            id = 2,
+                            descripcion = "Acceso limitado a funcionalidades básicas.",
+                            estado = true,
+                            nombre = "Cliente"
+                        });
                 });
 
             modelBuilder.Entity("InnovaSystemData.Sources.DataBase.Tables.TipoPagoTable", b =>
@@ -596,10 +913,6 @@ namespace InnovaSystem.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
-
-                    b.Property<string>("apellidos")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("descripcion")
                         .IsRequired()
@@ -611,9 +924,6 @@ namespace InnovaSystem.Migrations
                     b.Property<string>("nombres")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("telefono")
-                        .HasColumnType("int");
 
                     b.HasKey("id");
 
@@ -647,6 +957,9 @@ namespace InnovaSystem.Migrations
                     b.Property<bool>("estado")
                         .HasColumnType("bit");
 
+                    b.Property<int>("id_Persona")
+                        .HasColumnType("int");
+
                     b.Property<string>("nombres")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -665,7 +978,40 @@ namespace InnovaSystem.Migrations
 
                     b.HasKey("id");
 
+                    b.HasIndex("id_Persona")
+                        .IsUnique();
+
                     b.ToTable("Trabajador");
+
+                    b.HasData(
+                        new
+                        {
+                            id = 1,
+                            FechaFinContrato = new DateTime(2024, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FechaInicioContrato = new DateTime(2022, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            apellidoMaterno = "Pérez",
+                            apellidoPaterno = "García",
+                            estado = true,
+                            id_Persona = 1,
+                            nombres = "Juan",
+                            puesto = "Desarrollador de Software",
+                            salario = 3000.00m,
+                            telefono = "987654321"
+                        },
+                        new
+                        {
+                            id = 2,
+                            FechaFinContrato = new DateTime(2023, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FechaInicioContrato = new DateTime(2021, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            apellidoMaterno = "López",
+                            apellidoPaterno = "Rodríguez",
+                            estado = true,
+                            id_Persona = 2,
+                            nombres = "María",
+                            puesto = "Gerente de Marketing",
+                            salario = 5000.00m,
+                            telefono = "912345678"
+                        });
                 });
 
             modelBuilder.Entity("InnovaSystemData.Sources.DataBase.Tables.UsuarioTable", b =>
@@ -676,29 +1022,57 @@ namespace InnovaSystem.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
 
+                    b.Property<string>("Correo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("clave")
                         .IsRequired()
-                        .HasMaxLength(512)
-                        .HasColumnType("nvarchar(512)");
-
-                    b.Property<string>("correo")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("estado")
-                        .HasMaxLength(128)
                         .HasColumnType("bit");
 
-                    b.Property<int>("id_cliente")
+                    b.Property<int>("id_Persona")
                         .HasColumnType("int");
 
                     b.Property<int>("id_rol")
                         .HasColumnType("int");
 
+                    b.Property<string>("salt")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("id");
 
+                    b.HasIndex("id_Persona")
+                        .IsUnique();
+
+                    b.HasIndex("id_rol");
+
                     b.ToTable("users");
+
+                    b.HasData(
+                        new
+                        {
+                            id = 1,
+                            Correo = "juan.usuario@example.com",
+                            clave = "123456",
+                            estado = true,
+                            id_Persona = 1,
+                            id_rol = 1,
+                            salt = "randomsalt1"
+                        },
+                        new
+                        {
+                            id = 2,
+                            Correo = "maria.usuario@example.com",
+                            clave = "123456",
+                            estado = true,
+                            id_Persona = 2,
+                            id_rol = 2,
+                            salt = "randomsalt2"
+                        });
                 });
 
             modelBuilder.Entity("InnovaSystemData.Sources.DataBase.Tables.VentaTable", b =>
@@ -751,6 +1125,21 @@ namespace InnovaSystem.Migrations
                     b.ToTable("ventas");
                 });
 
+            modelBuilder.Entity("InnovaSystemData.Sources.DataBase.Tables.ClienteTable", b =>
+                {
+                    b.HasOne("InnovaSystemData.Sources.DataBase.Tables.ClienteDireccionTable", null)
+                        .WithOne()
+                        .HasForeignKey("InnovaSystemData.Sources.DataBase.Tables.ClienteTable", "id_Direccion")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("InnovaSystemData.Sources.DataBase.Tables.PersonaTable", null)
+                        .WithOne()
+                        .HasForeignKey("InnovaSystemData.Sources.DataBase.Tables.ClienteTable", "id_Persona")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("InnovaSystemData.Sources.DataBase.Tables.CompraTable", b =>
                 {
                     b.HasOne("InnovaSystemData.Sources.DataBase.Tables.EstadoTable", null)
@@ -772,12 +1161,6 @@ namespace InnovaSystem.Migrations
                         .WithOne()
                         .HasForeignKey("InnovaSystemData.Sources.DataBase.Tables.DeliveryTable", "id_direccion")
                         .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("InnovaSystemData.Sources.DataBase.Tables.EstadoTable", null)
-                        .WithMany()
-                        .HasForeignKey("id_estado")
-                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
@@ -808,6 +1191,60 @@ namespace InnovaSystem.Migrations
                         .WithOne()
                         .HasForeignKey("InnovaSystemData.Sources.DataBase.Tables.DetalleVentaTable", "id_venta")
                         .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("InnovaSystemData.Sources.DataBase.Tables.OrdenServicioTecnicoTable", b =>
+                {
+                    b.HasOne("InnovaSystemData.Sources.DataBase.Tables.TrabajadorTable", null)
+                        .WithMany()
+                        .HasForeignKey("id_Trabajador")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("InnovaSystemData.Sources.DataBase.Tables.ClienteTable", null)
+                        .WithMany()
+                        .HasForeignKey("id_cliente")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("InnovaSystemData.Sources.DataBase.Tables.ProductoTable", b =>
+                {
+                    b.HasOne("InnovaSystemData.Sources.DataBase.Tables.CategoriaTable", null)
+                        .WithMany()
+                        .HasForeignKey("id_categoria")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("InnovaSystemData.Sources.DataBase.Tables.MarcaTable", null)
+                        .WithMany()
+                        .HasForeignKey("id_marca")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("InnovaSystemData.Sources.DataBase.Tables.TrabajadorTable", b =>
+                {
+                    b.HasOne("InnovaSystemData.Sources.DataBase.Tables.PersonaTable", null)
+                        .WithOne()
+                        .HasForeignKey("InnovaSystemData.Sources.DataBase.Tables.TrabajadorTable", "id_Persona")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("InnovaSystemData.Sources.DataBase.Tables.UsuarioTable", b =>
+                {
+                    b.HasOne("InnovaSystemData.Sources.DataBase.Tables.PersonaTable", null)
+                        .WithOne()
+                        .HasForeignKey("InnovaSystemData.Sources.DataBase.Tables.UsuarioTable", "id_Persona")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("InnovaSystemData.Sources.DataBase.Tables.RolTable", null)
+                        .WithMany()
+                        .HasForeignKey("id_rol")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 

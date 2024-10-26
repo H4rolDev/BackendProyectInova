@@ -3,16 +3,16 @@ using InnovaSystemBussines.Store.Models;
 
 namespace InnovaSystemData.Store.Extentions
 {
-  public static class ProductoaExtentions {
+  public static class ProductoExtentions {
     public static Producto ToModel(this ProductoTable rt) {
       return new Producto {
         Id = rt.id,
         Nombre = rt.nombre,
         Imagen = rt.imagen,
-        Categoria = rt.categoria,
+        categoriaId = rt.id_categoria,
         Descripcion = rt.descripcion,
         Modelo = rt.modelo,
-        Marca = rt.marca,
+        MarcaId = rt.id_marca,
         Stock = rt.stock,
         PrecioVenta = rt.precioVenta,
         UtilidadPrecioVenta = rt.utilidadPrecioVenta,
@@ -26,10 +26,10 @@ namespace InnovaSystemData.Store.Extentions
         id = r.Id,
         nombre = r.Nombre,
         imagen = r.Imagen,
-        categoria = r.Categoria,
+        id_categoria = r.categoriaId,
         descripcion = r.Descripcion,
         modelo = r.Modelo,
-        marca = r.Marca,
+        id_marca = r.MarcaId,
         stock = r.Stock,
         precioVenta = r.PrecioVenta,
         utilidadPrecioVenta = r.UtilidadPrecioVenta,

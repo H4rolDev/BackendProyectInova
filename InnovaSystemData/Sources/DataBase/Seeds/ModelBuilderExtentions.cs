@@ -10,127 +10,334 @@ namespace InnovaSystemData.Sources.DataBase.Seeds
 {
     public static class ModelBuilderExtentions
     {
-
         public static void Seed(this ModelBuilder modelBuilder)
         {
-            /* modelBuilder.Entity<CategoriaTable>().HasData(
-                new CategoriaTable { id = 1, nombre = "Computadoras" },
-                new CategoriaTable { id = 2, nombre = "Laptops" },
-                new CategoriaTable { id = 3, nombre = "Auriculares" },
-                new CategoriaTable { id = 4, nombre = "Teclado" },
-                new CategoriaTable { id = 5, nombre = "Componentes" },
-                new CategoriaTable { id = 6, nombre = "Monitores"}
-                );
+            modelBuilder.Entity<RolTable>().HasData(
+                new RolTable
+                {
+                    id = 1,
+                    nombre = "Administrador",
+                    descripcion = "Acceso total a todas las funcionalidades.",
+                    estado = true
+                },
+                new RolTable
+                {
+                    id = 2,
+                    nombre = "Cliente",
+                    descripcion = "Acceso limitado a funcionalidades básicas.",
+                    estado = true
+                }
+            );
+            modelBuilder.Entity<PersonaTable>().HasData(
+                new PersonaTable
+                {
+                    id = 1,
+                    nombres = "Juan",
+                    apellidos = "Pérez",
+                    tipo_documento = "DNI",
+                    numero_documento = "12345678",
+                    telefono = "987654321",
+                    estado = true
+                },
+                new PersonaTable
+                {
+                    id = 2,
+                    nombres = "María",
+                    apellidos = "González",
+                    tipo_documento = "DNI",
+                    numero_documento = "87654321",
+                    telefono = "912345678",
+                    estado = true
+                }
+            );
+            modelBuilder.Entity<ClienteTable>().HasData(
+                new ClienteTable
+                {
+                    id = 1,
+                    id_Direccion = 1,
+                    id_Persona = 1,
+                    RSocial = "Cliente 1",
+                    Nombres = "Juan",
+                    Apellidos = "Perez",
+                    telefono = 123456789,
+                    correo = "juan.cliente@example.com",
+                    TipoDocumento = "DNI",
+                    NumeroDocumento = 12345678,
+                    estado = true
+                },
+                new ClienteTable
+                {
+                    id = 2,
+                    id_Direccion = 2,
+                    id_Persona = 2,
+                    RSocial = null,
+                    Nombres = "Maria",
+                    Apellidos = "Gomez",
+                    telefono = 987654321,
+                    correo = "maria.cliente@example.com",
+                    TipoDocumento = "DNI",
+                    NumeroDocumento = 87654321,
+                    estado = true
+                }
+            );
+            modelBuilder.Entity<TrabajadorTable>().HasData(
+                new TrabajadorTable
+                {
+                    id = 1,
+                    id_Persona = 1,
+                    nombres = "Juan",
+                    apellidoPaterno = "García",
+                    apellidoMaterno = "Pérez",
+                    FechaInicioContrato = new DateTime(2022, 01, 15),
+                    FechaFinContrato = new DateTime(2024, 01, 15),
+                    puesto = "Desarrollador de Software",
+                    salario = 3000.00m,
+                    telefono = "987654321",
+                    estado = true
+                },
+                new TrabajadorTable
+                {
+                    id = 2,
+                    id_Persona = 2,
+                    nombres = "María",
+                    apellidoPaterno = "Rodríguez",
+                    apellidoMaterno = "López",
+                    FechaInicioContrato = new DateTime(2021, 05, 01),
+                    FechaFinContrato = new DateTime(2023, 05, 01),
+                    puesto = "Gerente de Marketing",
+                    salario = 5000.00m,
+                    telefono = "912345678",
+                    estado = true
+                }
+            );
+            modelBuilder.Entity<UsuarioTable>().HasData(
+                new UsuarioTable
+                {
+                    id = 1,
+                    Correo = "juan.usuario@example.com",
+                    clave = "123456",
+                    salt = "randomsalt1",
+                    estado = true,
+                    id_Persona = 1,
+                    id_rol = 1
+                },
+                new UsuarioTable
+                {
+                    id = 2,
+                    Correo = "maria.usuario@example.com",
+                    clave = "123456",
+                    salt = "randomsalt2",
+                    estado = true,
+                    id_Persona = 2,
+                    id_rol = 2
+                }
+            );
+            modelBuilder.Entity<CategoriaTable>().HasData(
+                new CategoriaTable
+                {
+                    id = 1,
+                    nombre = "Computadoras",
+                    descripcion = "Todo tipo de computadoras, desde portátiles hasta de escritorio.",
+                    estado = true
+                },
+                new CategoriaTable
+                {
+                    id = 2,
+                    nombre = "Periféricos",
+                    descripcion = "Accesorios y dispositivos periféricos para computadoras.",
+                    estado = true
+                },
+                new CategoriaTable
+                {
+                    id = 3,
+                    nombre = "Componentes",
+                    descripcion = "Componentes internos como tarjetas madre, procesadores, etc.",
+                    estado = true
+                }
+            );
 
+            modelBuilder.Entity<CargoTable>().HasData(
+                new CargoTable
+                {
+                    id = 1,
+                    nombre = "Gerente",
+                    descripcion = "Encargado de la empresa.",
+                    salarioBase = 4000m,
+                    Estado = true
+                },
+                new CargoTable
+                {
+                    id = 2,
+                    nombre = "Vendedor",
+                    descripcion = "Vende en tienda.",
+                    salarioBase = 2000m,
+                    Estado = true
+                },
+                new CargoTable
+                {
+                    id = 3,
+                    nombre = "Servicio Tecnico",
+                    descripcion = "Tecnico en computacion.",
+                    salarioBase = 2000m,
+                    Estado = true
+                }
+            );
+            modelBuilder.Entity<ClienteDireccionTable>().HasData(
+                new ClienteDireccionTable
+                {
+                    id = 1,
+                    direccion = "Av. José Larco 123",
+                    referencia = "Frente al parque central",
+                    departamento = "Lima",
+                    provincia = "Lima",
+                    distrito = "Miraflores",
+                    estado = true
+                },
+                new ClienteDireccionTable
+                {
+                    id = 2,
+                    direccion = "Jr. Tacna 456",
+                    referencia = "Cerca a la plaza de armas",
+                    departamento = "Arequipa",
+                    provincia = "Arequipa",
+                    distrito = "Arequipa",
+                    estado = true
+                },
+                new ClienteDireccionTable
+                {
+                    id = 3,
+                    direccion = "Av. Los Incas 789",
+                    referencia = "Cerca del colegio nacional",
+                    departamento = "Cusco",
+                    provincia = "Cusco",
+                    distrito = "Cusco",
+                    estado = true
+                }
+            );
             modelBuilder.Entity<ProductoTable>().HasData(
                 new ProductoTable
                 {
                     id = 1,
-                    id_categoria = 1,
-                    imagen= "https://www.impacto.com.pe/storage/pc/sm/171570984947559.jpg",
-                    descripcion = "B550M, SSD M.2 1TB, RAM 16GB",
-                    modelo = "Ryzen 7 5700G",
-                    marca = "AMD",
-                    precioVenta = 3298.80m,
-                    stock = 10,
-                    garantia = 2
+                    id_categoria = 1, // Referencia a la categoría correspondiente
+                    id_marca = 1,     // Referencia a la marca "HP"
+                    nombre = "HP Pavilion 15",
+                    imagen = "hp_pavilion_15.jpg",
+                    descripcion = "Laptop HP Pavilion con procesador Intel Core i5 y 8GB de RAM.",
+                    modelo = "15-eh2021nr",
+                    precioVenta = 3500.00m,
+                    utilidadPrecioVenta = 500.00m,
+                    utilidadPorcentaje = "14.29%",
+                    stock = 20,
+                    garantia = 12, // meses
+                    estado = true
                 },
                 new ProductoTable
                 {
                     id = 2,
-                    id_categoria = 1,
-                    imagen= "https://www.impacto.com.pe/storage/pc/md/171589130599320.jpg",
-                    descripcion = "Tarjeta de Video RTX 3050, SSD M.2 1TB, RAM 16GB",
-                    modelo = "Core I5 13400F",
-                    marca = "Intel",
-                    precioVenta = 2170.50m,
-                    stock = 30,
-                    garantia = 2
+                    id_categoria = 1, // Referencia a la categoría correspondiente
+                    id_marca = 3,     // Referencia a la marca "Dell"
+                    nombre = "Dell XPS 13",
+                    imagen = "dell_xps_13.jpg",
+                    descripcion = "Laptop Dell XPS 13 con pantalla InfinityEdge y procesador Intel Core i7.",
+                    modelo = "XPS 13 9310",
+                    precioVenta = 4500.00m,
+                    utilidadPrecioVenta = 600.00m,
+                    utilidadPorcentaje = "13.33%",
+                    stock = 15,
+                    garantia = 12, // meses
+                    estado = true
                 },
                 new ProductoTable
                 {
                     id = 3,
-                    id_categoria = 1,
-                    imagen= "https://www.impacto.com.pe/storage/pc/sm/171570984947559.jpg",
-                    descripcion = "Tarjeta de Video RTX 3060TI, SSD M.2 1TB, RAM 32GB",
-                    modelo = "Ryzen 9 5900X",
-                    marca = "AMD",
-                    precioVenta = 4239.99m,
-                    stock = 10,
-                    garantia = 2
+                    id_categoria = 2, // Referencia a la categoría correspondiente
+                    id_marca = 2,     // Referencia a la marca "Logitech"
+                    nombre = "Logitech MX Master 3",
+                    imagen = "logitech_mx_master_3.jpg",
+                    descripcion = "Mouse inalámbrico Logitech MX Master 3 con control preciso.",
+                    modelo = "MX Master 3",
+                    precioVenta = 150.00m,
+                    utilidadPrecioVenta = 20.00m,
+                    utilidadPorcentaje = "13.33%",
+                    stock = 50,
+                    garantia = 24, // meses
+                    estado = true
                 },
                 new ProductoTable
                 {
                     id = 4,
-                    id_categoria = 1,
-                    imagen= "https://www.impacto.com.pe/storage/pc/sm/171570984947559.jpg",
-                    descripcion = "Tarjeta de Video RTX 4060, SSD M.2 1TB, RAM 32GB",
-                    modelo = "Ryzen 7 5700X",
-                    marca = "AMD",
-                    precioVenta = 4198.50m,
-                    stock = 10,
-                    garantia = 2
+                    id_categoria = 3, // Referencia a la categoría correspondiente
+                    id_marca = 6,     // Referencia a la marca "Razer"
+                    nombre = "Razer BlackWidow V3",
+                    imagen = "razer_blackwidow_v3.jpg",
+                    descripcion = "Teclado mecánico Razer BlackWidow V3 con retroiluminación RGB.",
+                    modelo = "BlackWidow V3",
+                    precioVenta = 200.00m,
+                    utilidadPrecioVenta = 30.00m,
+                    utilidadPorcentaje = "15.00%",
+                    stock = 25,
+                    garantia = 12, // meses
+                    estado = true
+                }
+            );
+            modelBuilder.Entity<MarcaTable>().HasData(
+                new MarcaTable
+                {
+                    id = 1,
+                    nombre = "HP",
+                    descripcion = "Líder en computadoras portátiles y de escritorio.",
+                    estado = true
                 },
-                new ProductoTable
+                new MarcaTable
+                {
+                    id = 2,
+                    nombre = "Logitech",
+                    descripcion = "Famosa por sus periféricos como teclados y mouses.",
+                    estado = true
+                },
+                new MarcaTable
+                {
+                    id = 3,
+                    nombre = "Dell",
+                    descripcion = "Reconocida por sus laptops y soluciones empresariales.",
+                    estado = true
+                },
+                new MarcaTable
+                {
+                    id = 4,
+                    nombre = "Asus",
+                    descripcion = "Conocida por sus computadoras y componentes de alto rendimiento.",
+                    estado = true
+                },
+                new MarcaTable
                 {
                     id = 5,
-                    id_categoria = 3,
-                    imagen= "https://www.impacto.com.pe/storage/pc/md/171572299747960.jpg",
-                    descripcion = "Con Microfono, Control De Volumen, Almohadillas Suaves",
-                    modelo = "Lightspeed Rgb G733 Gaming",
-                    marca = "Logitech",
-                    precioVenta = 538.99m,
-                    stock = 3,
-                    garantia = 1
+                    nombre = "Acer",
+                    descripcion = "Fabricante de computadoras y tecnología innovadora.",
+                    estado = true
                 },
-                new ProductoTable
+                new MarcaTable
                 {
                     id = 6,
-                    id_categoria = 3,
-                    imagen="https://www.impacto.com.pe/storage/products/sm/169099476727139.jpg",
-                    descripcion = "Inalambrico, Con Microfono, Control De Volumen, Almohadillas Suaves",
-                    modelo = "G Pro X Gaming",
-                    marca = "Logitech",
-                    precioVenta = 638.99m,
-                    stock = 3,
-                    garantia = 1
+                    nombre = "Razer",
+                    descripcion = "Marca premium en periféricos para gamers.",
+                    estado = true
                 },
-                new ProductoTable
+                new MarcaTable
                 {
                     id = 7,
-                    id_categoria = 3,
-                    imagen="https://www.impacto.com.pe/storage/products/sm/168867107289840.jpg",
-                    descripcion = "Inalambrico, Necro C/gris, Gaming Surrow 7.1, C/microfono, Entrada Jack",
-                    modelo = "Dark Templar",
-                    marca = "Gambyte ",
-                    precioVenta = 128.99m,
-                    stock = 3,
-                    garantia = 1
+                    nombre = "Microsoft",
+                    descripcion = "Conocida por sus productos de software y hardware, incluyendo teclados.",
+                    estado = true
                 },
-                new ProductoTable
+                new MarcaTable
                 {
                     id = 8,
-                    id_categoria = 3,
-                    imagen="https://www.impacto.com.pe/storage/products/sm/168867107289840.jpg",
-                    descripcion = "Inalambrico, Necro C/gris, Gaming Surrow 7.1, C/microfono, Entrada Jack",
-                    modelo = "Dark Templar",
-                    marca = "Gambyte ",
-                    precioVenta = 128.99m,
-                    stock = 3,
-                    garantia = 1
-                },
-                new ProductoTable
-                {
-                    id = 9,
-                    id_categoria = 6,
-                    imagen="https://www.impacto.com.pe/storage/products/sm/169099387290344.jpg",
-                    descripcion = "Color Negro, Gaming 5.1, Bluetooth 5.0, Con Microfono, Control De Volumen, Almohadillas Suaves",
-                    modelo = "Soul",
-                    marca = "Gambyte",
-                    precioVenta = 120.99m,
-                    stock = 23
-                }  
-            ); */
+                    nombre = "Apple",
+                    descripcion = "Reconocida por su tecnología innovadora y productos de alta gama.",
+                    estado = true
+                }
+            );
         }
     }
 }

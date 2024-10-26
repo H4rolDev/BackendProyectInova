@@ -6,7 +6,6 @@ using System.Runtime.CompilerServices;
 namespace InnovaSystemData.Sources.DataBase.Tables
 {
     [Table("documentos")]
-
     public class DocumentoTable
     {
         [Key]

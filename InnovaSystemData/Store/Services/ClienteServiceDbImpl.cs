@@ -61,12 +61,13 @@ namespace  InnovaSystemData.Store.Services {
                 .FirstOrDefault(r => r.id == id && r.estado);
             if (cliente == null) throw new MessageExeption("No se encontro el Cliente");
             cliente.RSocial = body.RazonSocial;
-            cliente.documento = body.Documento;
             cliente.Nombres = body.Nombres;
             cliente.Apellidos = body.Apellidos;
             cliente.telefono = body.Telefono;
             cliente.correo = body.Correo;
-            cliente.direccion = body.Direccion;
+            cliente.id_Direccion = body.DireccionId;
+            cliente.TipoDocumento = body.TipoDocumento;
+            cliente.NumeroDocumento = body.NumeroDocumento;
             int r = _db.SaveChanges();
             if (r == 1) return;
             else throw new MessageExeption("No se pudo eliminar el Cliente");

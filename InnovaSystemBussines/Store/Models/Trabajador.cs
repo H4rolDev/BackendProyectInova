@@ -1,6 +1,7 @@
 namespace InnovaSystemBussines.Store.Models{
     public class Trabajador{
         public int Id { get; set; }
+        public int PersonaId{get;set;}
         public string Nombre {get;set;}
         public string ApellidoPaterno {get;set;}
         public string ApellidoMaterno {get;set;}
@@ -13,6 +14,7 @@ namespace InnovaSystemBussines.Store.Models{
     }
 
     public class TrabajadorBody{
+        public int PersonaId{get;set;}
         public string Nombre {get;set;}
         public string ApellidoPaterno {get;set;}
         public string ApellidoMaterno {get;set;}
@@ -25,6 +27,7 @@ namespace InnovaSystemBussines.Store.Models{
             if (rb == null) return null;
             return new Trabajador {
                 Id = 0,
+                PersonaId = rb.PersonaId,
                 Nombre = rb.Nombre,
                 ApellidoPaterno = rb.ApellidoPaterno,
                 ApellidoMaterno = rb.ApellidoMaterno,

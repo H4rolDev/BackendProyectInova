@@ -7,26 +7,30 @@ namespace InnovaSystemData.Store.Extentions
     public static Cliente ToModel(this ClienteTable rt) {
       return new Cliente {
         Id = rt.id,
+        PersonaId = rt.id_Persona,
+        DireccionId = rt.id_Direccion,
         RazonSocial = rt.RSocial,
-        Documento = rt.documento,
         Nombres = rt.Nombres,
         Apellidos = rt.Apellidos,
         Telefono = rt.telefono,
         Correo = rt.correo,
-        Direccion = rt.direccion
+        TipoDocumento = rt.TipoDocumento,
+        NumeroDocumento = rt.NumeroDocumento
       };
     }
 
     public static ClienteTable ToTable(this Cliente r) {
       return new ClienteTable {
         id = r.Id,
+        id_Persona = r.PersonaId,
+        id_Direccion = r.DireccionId,
         RSocial = r.RazonSocial,
-        documento = r.Documento,
         Nombres = r.Nombres,
         Apellidos = r.Apellidos,
         telefono = r.Telefono,
         correo = r.Correo,
-        direccion = r.Direccion,
+        TipoDocumento = r.TipoDocumento,
+        NumeroDocumento = r.NumeroDocumento,
         estado = true
       };
     }

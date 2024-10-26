@@ -1,8 +1,8 @@
 namespace InnovaSystemBussines.Store.Models{
     public class OrdenServicioTecnico{
         public int Id { get; set; }
-        public string Cliente {get;set;}
-        public string Trabajador {get;set;}
+        public int ClienteId {get;set;}
+        public int TrabajadorId {get;set;}
         public DateTime FechaInicio {get;set;}
         public DateTime FechFin {get;set;}
         public TimeSpan HoraInicio {get;set;}
@@ -14,8 +14,8 @@ namespace InnovaSystemBussines.Store.Models{
     }
 
     public class OrdenServicioTecnicoBody{
-        public string Cliente {get;set;}
-        public string Trabajador {get;set;}
+        public int ClienteId {get;set;}
+        public int TrabajadorId {get;set;}
         public DateTime FechaInicio {get;set;}
         public DateTime FechFin {get;set;}
         public TimeSpan HoraInicio {get;set;}
@@ -27,8 +27,8 @@ namespace InnovaSystemBussines.Store.Models{
             if (rb == null) return null;
             return new OrdenServicioTecnico {
                 Id = 0,
-                Cliente = rb.Cliente,
-                Trabajador = rb.Trabajador,
+                ClienteId = rb.ClienteId,
+                TrabajadorId = rb.TrabajadorId,
                 FechaInicio = rb.FechaInicio,
                 FechFin = rb.FechFin,
                 HoraInicio = rb.HoraInicio,

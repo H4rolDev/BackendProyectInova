@@ -15,3 +15,4 @@ C:\Users\Harol\Desktop\ProyectoFinalBackend\InnovaSystemData\obj\Debug\net8.0\re
 C:\Users\Harol\Desktop\ProyectoFinalBackend\InnovaSystemData\bin\Debug\net8.0\InnovaSystemBussines.dll
 C:\Users\Harol\Desktop\ProyectoFinalBackend\InnovaSystemData\bin\Debug\net8.0\InnovaSystemBussines.pdb
 C:\Users\Harol\Desktop\ProyectoFinalBackend\InnovaSystemData\obj\Debug\net8.0\InnovaSy.5B5860BB.Up2Date
+C:\Users\Harol\Desktop\ProyectoFinalBackend\InnovaSystemData\obj\Debug\net8.0\InnovaSystemData.sourcelink.json

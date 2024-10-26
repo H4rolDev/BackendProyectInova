@@ -10,20 +10,16 @@ namespace InnovaSystemData.Sources.DataBase.Tables
     {
         [Key]
         public int id { get; set; }
-/*         public int id_categoria { get; set; }
- */     
+        public int id_categoria { get; set; }
+        public int id_marca{get;set;}
         public string nombre {get;set;}
         public string? imagen { get; set; }
-        public string categoria {get;set;}
         [Required]
         [StringLength(250)]
         public string descripcion { get; set; }
         [Required]
         [StringLength(250)]
         public string modelo { get; set; }
-        [Required]
-        [StringLength(250)]
-        public string marca { get; set; }
         [Required]
         public decimal precioVenta { get; set; }
         [Required]

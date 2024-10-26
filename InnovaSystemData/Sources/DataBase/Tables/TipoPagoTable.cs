@@ -13,13 +13,9 @@ namespace InnovaSystemData.Sources.DataBase.Tables
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id { get; set; }
         [Required]
-        public string descripcion {get;set;}
-        [Required]
         public string nombres {get;set;}
         [Required]
-        public string apellidos {get;set;}
-        [Required]
-        public int telefono {get;set;}
+        public string descripcion {get;set;}
         [Required]
         public bool estado { get; set; }
         

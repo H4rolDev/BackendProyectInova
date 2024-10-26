@@ -23,46 +23,46 @@ namespace InnovaSystemData.Sources.DataBase
             modelBuilder.Seed();
 
             // Rol -> Usuario | uno a muchos
-            /* modelBuilder.Entity<RolTable>()
+            modelBuilder.Entity<RolTable>()
                 .HasMany<UsuarioTable>()
                 .WithOne()
                 .HasForeignKey(u => u.id_rol)
-                .IsRequired(); */
+                .IsRequired();
 
-            // EmpleadoTecnico -> OrdenServicioTecnico | uno a muchos
-           /*  modelBuilder.Entity<TrabajadorTable>()
+            // Persona - Usuario | uno a uno
+            modelBuilder.Entity<PersonaTable>()
+                .HasOne<UsuarioTable>()
+                .WithOne()
+                .HasForeignKey<UsuarioTable>(u => u.id_Persona)
+                .IsRequired();
+            
+            // Persona - Trabajador | uno a uno
+            modelBuilder.Entity<PersonaTable>()
+                .HasOne<TrabajadorTable>()
+                .WithOne()
+                .HasForeignKey<TrabajadorTable>(u => u.id_Persona)
+                .IsRequired();
+
+            // Trababajador -> OrdenServicioTecnico | uno a muchos
+            modelBuilder.Entity<TrabajadorTable>()
                 .HasMany<OrdenServicioTecnicoTable>()
                 .WithOne()
                 .HasForeignKey(u => u.id_Trabajador)
-                .IsRequired();  */
-
-            // Cliente - Usuario | uno a uno
-            /* modelBuilder.Entity<ClienteTable>()
-                .HasOne<UsuarioTable>()
-                .WithOne()
-                .HasForeignKey<UsuarioTable>(u => u.id_cliente)
-                .IsRequired(); */
+                .IsRequired();
 
             // Cliente -> OrdenServicioTecnico | uno a muchos
-            /* modelBuilder.Entity<ClienteTable>()
+            modelBuilder.Entity<ClienteTable>()
                 .HasMany<OrdenServicioTecnicoTable>()
                 .WithOne()
                 .HasForeignKey(u => u.id_cliente)
-                .IsRequired(); */
+                .IsRequired();
 
-            // CLiente - Documento | uno a uno
-            /* modelBuilder.Entity<DocumentoTable>()
+            // ClienteDireccion -> Cliente | uno a uno
+            modelBuilder.Entity<ClienteDireccionTable>()
                 .HasOne<ClienteTable>()
                 .WithOne()
-                .HasForeignKey<ClienteTable>(u => u.id_documento)
-                .IsRequired(); */
-            
-            // Cliente -> ClienteDireccion | uno a uno
-            /* modelBuilder.Entity<ClienteDireccionTable>()
-                .HasOne<ClienteTable>()
-                .WithOne()
-                .HasForeignKey<ClienteTable>(u => u.id_clienteDireccion)
-                .IsRequired(); */
+                .HasForeignKey<ClienteTable>(u => u.id_Direccion)
+                .IsRequired();
 
             // Cliente -> Venta | uno a muchos
             modelBuilder.Entity<ClienteTable>()
@@ -88,6 +88,15 @@ namespace InnovaSystemData.Sources.DataBase
                 .IsRequired()
                 .OnDelete(DeleteBehavior.Restrict);
 
+            // Persona -> Cliente | uno a uno
+            modelBuilder.Entity<PersonaTable>()
+                .HasOne<ClienteTable>()
+                .WithOne()
+                .HasForeignKey<ClienteTable>(u => u.id_Persona)
+                .IsRequired()
+                .OnDelete(DeleteBehavior.Restrict);
+                
+
             // ClienteDireccion -> Delivery | uno a uno
             modelBuilder.Entity<ClienteDireccionTable>()
                 .HasOne<DeliveryTable>()
@@ -103,14 +112,7 @@ namespace InnovaSystemData.Sources.DataBase
                 .HasForeignKey<DetalleVentaTable>(u => u.id_venta)
                 .IsRequired()
                 .OnDelete(DeleteBehavior.Restrict);
-            
-            // Cliente -> OrdenServicioTecnico | uno a muchos
-            /* modelBuilder.Entity<ClienteTable>()
-                .HasMany<OrdenServicioTecnicoTable>()
-                .WithOne()
-                .HasForeignKey(u => u.id_cliente)
-                .IsRequired(); */
-            
+
             // Delivery -> Venta | uno a uno
             modelBuilder.Entity<DeliveryTable>()
                 .HasOne<VentaTable>()
@@ -127,13 +129,6 @@ namespace InnovaSystemData.Sources.DataBase
                 .IsRequired()
                 .OnDelete(DeleteBehavior.Restrict);
 
-            // Estado -> Delivery | uno a muchos
-            modelBuilder.Entity<EstadoTable>()
-                .HasMany<DeliveryTable>()
-                .WithOne()
-                .HasForeignKey(u => u.id_estado)
-                .IsRequired();
-            
             // Productos -> DetalleVenta | uno a muchos
             modelBuilder.Entity<ProductoTable>()
                 .HasMany<DetalleVentaTable>()
@@ -161,8 +156,6 @@ namespace InnovaSystemData.Sources.DataBase
                 .WithOne()
                 .HasForeignKey(u => u.id_producto)
                 .IsRequired();
-            
-            // TipoProducto -> Producto | uno a muchos
 
             // Compra -> DetalleCOmpra | uno a muchos
             modelBuilder.Entity<CompraTable>()
@@ -171,12 +164,19 @@ namespace InnovaSystemData.Sources.DataBase
                 .HasForeignKey(u => u.id_compra)
                 .IsRequired();
 
-            // TipoProducto -> Categoria | uno a muchos
-            /* modelBuilder.Entity<CategoriaTable>()
+            //TipoProducto -> Categoria | uno a muchos
+            modelBuilder.Entity<CategoriaTable>()
                 .HasMany<ProductoTable>()
                 .WithOne()
                 .HasForeignKey(u => u.id_categoria)
-                .IsRequired(); */
+                .IsRequired();
+
+            // Marca -> Producto | uno a muchos
+            modelBuilder.Entity<MarcaTable>()
+                .HasMany<ProductoTable>()
+                .WithOne()
+                .HasForeignKey(u => u.id_marca)
+                .IsRequired();
         }
         public DbSet<CategoriaTable> categorias { get; set; }
         public DbSet<ClienteTable> clientes { get; set; }
@@ -185,9 +185,9 @@ namespace InnovaSystemData.Sources.DataBase
         public DbSet<DeliveryTable> deliverys { get; set; }
         public DbSet<DetalleCompraTable> detalleCompras { get; set; }
         public DbSet<DetalleVentaTable> detalleVentas { get; set; }
-        public DbSet<DocumentoTable> documentos { get; set; }
         public DbSet<EstadoTable> estados { get; set; }
         public DbSet<OrdenServicioTecnicoTable> ordenServicioTecnicos { get; set; }
+        public DbSet<PersonaTable> personas { get; set; }
         public DbSet<ProductoTable> productos { get; set; }
         public DbSet<ProveedorTable> proveedores { get; set; }
         public DbSet<RecojoAlmacenTable> recojoAlmacen { get; set; }
@@ -197,5 +197,6 @@ namespace InnovaSystemData.Sources.DataBase
         public DbSet<TrabajadorTable> trabajadores { get; set; }
         public DbSet<VentaTable> ventas { get; set; }
         public DbSet<MarcaTable> marcas { get; set; }
+        public DbSet<CargoTable> cargos { get; set; }
     }
 }

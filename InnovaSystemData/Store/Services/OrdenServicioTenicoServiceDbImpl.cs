@@ -60,8 +60,8 @@ namespace  InnovaSystemData.Store.Services {
             OrdenServicioTecnicoTable? ordenserviciotecnico = _db.ordenServicioTecnicos
                 .FirstOrDefault(r => r.id == id && r.estado);
             if (ordenserviciotecnico == null) throw new MessageExeption("No se encontro la Orden del Servicio Tecnico");
-            ordenserviciotecnico.cliente = body.Cliente;
-            ordenserviciotecnico.trabajador = body.Trabajador;
+            ordenserviciotecnico.id_cliente = body.ClienteId;
+            ordenserviciotecnico.id_Trabajador = body.TrabajadorId;
             ordenserviciotecnico.fechaInicio = body.FechaInicio;
             ordenserviciotecnico.fechaFin = body.FechFin;
             ordenserviciotecnico.horaInicio = body.HoraInicio;

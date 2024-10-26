@@ -13,9 +13,9 @@ namespace InnovaSystemData.Sources.DataBase.Tables
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id { get; set; }
         [Required]
-        public string cliente{get;set;}
+        public int id_cliente{get;set;}
         [Required]
-        public string trabajador{get;set;}
+        public int id_Trabajador{get;set;}
         [Required]
         public DateTime fechaInicio { get; set; }
         [Required]

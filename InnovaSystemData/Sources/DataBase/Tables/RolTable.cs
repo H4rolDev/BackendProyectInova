@@ -10,7 +10,6 @@ namespace InnovaSystemData.Sources.DataBase.Tables
     public class RolTable
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id { get; set; }
         [Required]
         public string nombre { get; set; }

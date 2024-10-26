@@ -10,11 +10,11 @@ namespace InnovaSystemData.Sources.DataBase.Tables
     public class ClienteTable
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id { get; set; }
+        public int id_Direccion{get;set;}
         [Required]
-        [StringLength(100)]
-        public string RSocial { get; set; }
+        public int id_Persona { get; set; } 
+        public string? RSocial { get; set; }
         [Required]
         [StringLength(100)]
         public string Nombres { get; set; }
@@ -26,16 +26,12 @@ namespace InnovaSystemData.Sources.DataBase.Tables
         public int telefono { get; set; }
         [Required]
         [StringLength(100)]
-        [EmailAddress]
         public string correo { get; set; }
-        /* public int id_documento { get; set; }
-        public int id_clienteDireccion { get; set; } */
         [Required]
-        public int documento{get;set;}
+        public string TipoDocumento {get;set;}
         [Required]
-        public string direccion {get;set;}
+        public int NumeroDocumento {get;set;}
         [Required]
         public bool estado { get; set; }
-
     }
 }

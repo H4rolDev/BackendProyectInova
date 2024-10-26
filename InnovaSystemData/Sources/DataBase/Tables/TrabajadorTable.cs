@@ -12,6 +12,7 @@ namespace InnovaSystemData.Sources.DataBase.Tables
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id { get; set; }
+        public int id_Persona { get; set; }
         [Required]
         [StringLength(100)]
         public string nombres { get; set; }

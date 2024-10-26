@@ -7,8 +7,8 @@ namespace InnovaSystemData.Store.Extentions
     public static OrdenServicioTecnico ToModel(this OrdenServicioTecnicoTable rt) {
       return new OrdenServicioTecnico {
         Id = rt.id,
-        Cliente = rt.cliente,
-        Trabajador = rt.trabajador,
+        ClienteId = rt.id_cliente,
+        TrabajadorId = rt.id_Trabajador,
         FechaInicio = rt.fechaInicio,
         FechFin = rt.fechaFin,
         HoraInicio = rt.horaInicio,
@@ -22,8 +22,8 @@ namespace InnovaSystemData.Store.Extentions
     public static OrdenServicioTecnicoTable ToTable(this OrdenServicioTecnico r) {
       return new OrdenServicioTecnicoTable {
         id = r.Id,
-        cliente = r.Cliente,
-        trabajador = r.Trabajador,
+        id_cliente = r.ClienteId,
+        id_Trabajador = r.TrabajadorId,
         fechaInicio = r.FechaInicio,
         fechaFin = r.FechFin,
         horaInicio = r.HoraInicio,
