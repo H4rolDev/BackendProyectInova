@@ -16,7 +16,7 @@ namespace InnovaSystemData.Sources.DataBase.Seeds
                 new RolTable
                 {
                     id = 1,
-                    nombre = "Administrador",
+                    nombre = "Trabajador",
                     descripcion = "Acceso total a todas las funcionalidades.",
                     estado = true
                 },
@@ -88,8 +88,8 @@ namespace InnovaSystemData.Sources.DataBase.Seeds
                     apellidoMaterno = "Pérez",
                     FechaInicioContrato = new DateTime(2022, 01, 15),
                     FechaFinContrato = new DateTime(2024, 01, 15),
-                    puesto = "Desarrollador de Software",
-                    salario = 3000.00m,
+                    id_Puesto = 1,
+                    salario = 4000.00m,
                     telefono = "987654321",
                     estado = true
                 },
@@ -102,8 +102,8 @@ namespace InnovaSystemData.Sources.DataBase.Seeds
                     apellidoMaterno = "López",
                     FechaInicioContrato = new DateTime(2021, 05, 01),
                     FechaFinContrato = new DateTime(2023, 05, 01),
-                    puesto = "Gerente de Marketing",
-                    salario = 5000.00m,
+                    id_Puesto = 2,
+                    salario = 1500.00m,
                     telefono = "912345678",
                     estado = true
                 }

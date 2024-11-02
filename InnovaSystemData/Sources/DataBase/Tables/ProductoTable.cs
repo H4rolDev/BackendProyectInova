@@ -25,6 +25,7 @@ namespace InnovaSystemData.Sources.DataBase.Tables
         [Required]
         public decimal utilidadPrecioVenta { get; set; }
         [Required]
+        [Precision(18,2)]
         public int utilidadPorcentaje { get; set; }
         [Required]
         public int stock { get; set; }

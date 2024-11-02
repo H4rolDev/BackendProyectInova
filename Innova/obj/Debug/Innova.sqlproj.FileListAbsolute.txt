@@ -1,0 +1,11 @@
+/home/h4ndx/Desktop/InnovaSystem/BackendProyectInova/Innova/bin/Debug/Innova.dacpac
+/home/h4ndx/Desktop/InnovaSystem/BackendProyectInova/Innova/bin/Debug/Innova.dll
+/home/h4ndx/Desktop/InnovaSystem/BackendProyectInova/Innova/bin/Debug/Innova.pdb
+/home/h4ndx/Desktop/InnovaSystem/BackendProyectInova/Innova/obj/Debug/Innova.GeneratedMSBuildEditorConfig.editorconfig
+/home/h4ndx/Desktop/InnovaSystem/BackendProyectInova/Innova/obj/Debug/Innova.sourcelink.json
+/home/h4ndx/Desktop/InnovaSystem/BackendProyectInova/Innova/obj/Debug/Model.xml
+/home/h4ndx/Desktop/InnovaSystem/BackendProyectInova/Innova/obj/Debug/refactor.xml
+/home/h4ndx/Desktop/InnovaSystem/BackendProyectInova/Innova/obj/Debug/postdeploy.sql
+/home/h4ndx/Desktop/InnovaSystem/BackendProyectInova/Innova/obj/Debug/predeploy.sql
+/home/h4ndx/Desktop/InnovaSystem/BackendProyectInova/Innova/obj/Debug/Innova.dll
+/home/h4ndx/Desktop/InnovaSystem/BackendProyectInova/Innova/obj/Debug/Innova.pdb

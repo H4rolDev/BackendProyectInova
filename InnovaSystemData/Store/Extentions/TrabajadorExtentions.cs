@@ -13,7 +13,7 @@ namespace InnovaSystemData.Store.Extentions
         ApellidoMaterno = rt.apellidoMaterno,
         FechaInicioContrato = rt.FechaInicioContrato,
         FechaFinContrato = rt.FechaFinContrato,
-        Puesto = rt.puesto,
+        PuestoId = rt.id_Puesto,
         Salario = rt.salario,
         Telefono = rt.telefono,   
       };
@@ -27,7 +27,7 @@ namespace InnovaSystemData.Store.Extentions
         apellidoMaterno = r.ApellidoMaterno,
         FechaInicioContrato = r.FechaInicioContrato,
         FechaFinContrato = r.FechaFinContrato,
-        puesto = r.Puesto,
+        id_Puesto = r.PuestoId,
         salario = r.Salario,
         telefono = r.Telefono, 
         estado = true

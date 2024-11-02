@@ -14,6 +14,8 @@ namespace InnovaSystemData.Sources.DataBase.Tables
         public int id { get; set; }
         public int id_Persona { get; set; }
         [Required]
+        public int id_Puesto {get;set;}
+        [Required]
         [StringLength(100)]
         public string nombres { get; set; }
         [Required]
@@ -22,11 +24,10 @@ namespace InnovaSystemData.Sources.DataBase.Tables
         [Required]
         [StringLength(100)]
         public string apellidoMaterno { get; set; }
-        
         public DateTime FechaInicioContrato {get;set;}   
         public DateTime FechaFinContrato {get;set;}   
         [Required]
-        public string puesto {get;set;}
+        [Precision(18,2)]
         public decimal salario { get; set; }
         [Required]
         [Phone]

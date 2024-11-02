@@ -65,7 +65,7 @@ namespace  InnovaSystemData.Store.Services {
             rol.apellidoMaterno = body.ApellidoMaterno;
             rol.FechaInicioContrato = body.FechaInicioContrato;
             rol.FechaFinContrato = body.FechaFinContrato;
-            rol.puesto = body.Puesto;
+            rol.id_Puesto = body.PuestoId;
             rol.salario = body.Salario;
             rol.telefono = body.Telefono;
             int r = _db.SaveChanges();

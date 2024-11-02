@@ -19,7 +19,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var connStr = builder.Configuration
-    .GetValue<string>("ConnectionStrings:InnovaLocalDb");
+    .GetValue<string>("ConnectionStrings:InnovaProductionDb");
 
 builder.Services.AddDbContext<InnovaDbContext>(
     // Connect to SqlServer

@@ -7,7 +7,7 @@ namespace InnovaSystemBussines.Store.Models{
         public string ApellidoMaterno {get;set;}
         public DateTime FechaInicioContrato {get;set;}   
         public DateTime FechaFinContrato {get;set;} 
-        public string Puesto {get;set;}
+        public int PuestoId {get;set;}
         public decimal Salario {get;set;}
         public string Telefono {get;set;}
         public bool Estado {get;set;}
@@ -20,7 +20,7 @@ namespace InnovaSystemBussines.Store.Models{
         public string ApellidoMaterno {get;set;}
         public DateTime FechaInicioContrato {get;set;}   
         public DateTime FechaFinContrato {get;set;} 
-        public string Puesto {get;set;}
+        public int PuestoId {get;set;}
         public decimal Salario {get;set;}
         public string Telefono {get;set;}
         public static implicit operator Trabajador(TrabajadorBody rb) {
@@ -33,7 +33,7 @@ namespace InnovaSystemBussines.Store.Models{
                 ApellidoMaterno = rb.ApellidoMaterno,
                 FechaInicioContrato = rb.FechaInicioContrato,
                 FechaFinContrato = rb.FechaFinContrato,
-                Puesto = rb.Puesto,
+                PuestoId = rb.PuestoId,
                 Salario = rb.Salario,
                 Telefono = rb.Telefono,
                 Estado = true,
