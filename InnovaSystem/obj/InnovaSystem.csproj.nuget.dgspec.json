@@ -1,27 +1,124 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Harol\\Desktop\\ProyectoFinalBackend\\InnovaSystem\\InnovaSystem.csproj": {}
+    "/home/h4ndx/Desktop/InnovaSystem/BackendProyectInova/InnovaSystem/InnovaSystem.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Harol\\Desktop\\ProyectoFinalBackend\\InnovaSystemBussines\\InnovaSystemBussines.csproj": {
+    "/home/h4ndx/Desktop/InnovaSystem/BackendProyectInova/InnovaSystem/InnovaSystem.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Harol\\Desktop\\ProyectoFinalBackend\\InnovaSystemBussines\\InnovaSystemBussines.csproj",
-        "projectName": "InnovaSystemBussines",
-        "projectPath": "C:\\Users\\Harol\\Desktop\\ProyectoFinalBackend\\InnovaSystemBussines\\InnovaSystemBussines.csproj",
-        "packagesPath": "C:\\Users\\Harol\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Harol\\Desktop\\ProyectoFinalBackend\\InnovaSystemBussines\\obj\\",
+        "projectUniqueName": "/home/h4ndx/Desktop/InnovaSystem/BackendProyectInova/InnovaSystem/InnovaSystem.csproj",
+        "projectName": "InnovaSystem",
+        "projectPath": "/home/h4ndx/Desktop/InnovaSystem/BackendProyectInova/InnovaSystem/InnovaSystem.csproj",
+        "packagesPath": "/home/h4ndx/.nuget/packages/",
+        "outputPath": "/home/h4ndx/Desktop/InnovaSystem/BackendProyectInova/InnovaSystem/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Harol\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/home/h4ndx/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/home/h4ndx/Desktop/InnovaSystem/BackendProyectInova/InnovaSystemBussines/InnovaSystemBussines.csproj": {
+                "projectPath": "/home/h4ndx/Desktop/InnovaSystem/BackendProyectInova/InnovaSystemBussines/InnovaSystemBussines.csproj"
+              },
+              "/home/h4ndx/Desktop/InnovaSystem/BackendProyectInova/InnovaSystemData/InnovaSystemData.csproj": {
+                "projectPath": "/home/h4ndx/Desktop/InnovaSystem/BackendProyectInova/InnovaSystemData/InnovaSystemData.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.OpenApi": {
+              "target": "Package",
+              "version": "[8.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[8.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.10, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.6.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.8, 8.0.8]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.108/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/h4ndx/Desktop/InnovaSystem/BackendProyectInova/InnovaSystemBussines/InnovaSystemBussines.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/h4ndx/Desktop/InnovaSystem/BackendProyectInova/InnovaSystemBussines/InnovaSystemBussines.csproj",
+        "projectName": "InnovaSystemBussines",
+        "projectPath": "/home/h4ndx/Desktop/InnovaSystem/BackendProyectInova/InnovaSystemBussines/InnovaSystemBussines.csproj",
+        "packagesPath": "/home/h4ndx/.nuget/packages/",
+        "outputPath": "/home/h4ndx/Desktop/InnovaSystem/BackendProyectInova/InnovaSystemBussines/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/h4ndx/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -34,11 +131,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -55,41 +147,45 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.8, 8.0.8]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.108/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Harol\\Desktop\\ProyectoFinalBackend\\InnovaSystemData\\InnovaSystemData.csproj": {
+    "/home/h4ndx/Desktop/InnovaSystem/BackendProyectInova/InnovaSystemData/InnovaSystemData.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Harol\\Desktop\\ProyectoFinalBackend\\InnovaSystemData\\InnovaSystemData.csproj",
+        "projectUniqueName": "/home/h4ndx/Desktop/InnovaSystem/BackendProyectInova/InnovaSystemData/InnovaSystemData.csproj",
         "projectName": "InnovaSystemData",
-        "projectPath": "C:\\Users\\Harol\\Desktop\\ProyectoFinalBackend\\InnovaSystemData\\InnovaSystemData.csproj",
-        "packagesPath": "C:\\Users\\Harol\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Harol\\Desktop\\ProyectoFinalBackend\\InnovaSystemData\\obj\\",
+        "projectPath": "/home/h4ndx/Desktop/InnovaSystem/BackendProyectInova/InnovaSystemData/InnovaSystemData.csproj",
+        "packagesPath": "/home/h4ndx/.nuget/packages/",
+        "outputPath": "/home/h4ndx/Desktop/InnovaSystem/BackendProyectInova/InnovaSystemData/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Harol\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/home/h4ndx/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Harol\\Desktop\\ProyectoFinalBackend\\InnovaSystemBussines\\InnovaSystemBussines.csproj": {
-                "projectPath": "C:\\Users\\Harol\\Desktop\\ProyectoFinalBackend\\InnovaSystemBussines\\InnovaSystemBussines.csproj"
+              "/home/h4ndx/Desktop/InnovaSystem/BackendProyectInova/InnovaSystemBussines/InnovaSystemBussines.csproj": {
+                "projectPath": "/home/h4ndx/Desktop/InnovaSystem/BackendProyectInova/InnovaSystemBussines/InnovaSystemBussines.csproj"
               }
             }
           }
@@ -98,11 +194,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -143,106 +234,18 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "frameworkReferences": {
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.8, 8.0.8]"
             }
-          },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
-        }
-      }
-    },
-    "C:\\Users\\Harol\\Desktop\\ProyectoFinalBackend\\InnovaSystem\\InnovaSystem.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\Users\\Harol\\Desktop\\ProyectoFinalBackend\\InnovaSystem\\InnovaSystem.csproj",
-        "projectName": "InnovaSystem",
-        "projectPath": "C:\\Users\\Harol\\Desktop\\ProyectoFinalBackend\\InnovaSystem\\InnovaSystem.csproj",
-        "packagesPath": "C:\\Users\\Harol\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Harol\\Desktop\\ProyectoFinalBackend\\InnovaSystem\\obj\\",
-        "projectStyle": "PackageReference",
-        "configFilePaths": [
-          "C:\\Users\\Harol\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
-        ],
-        "originalTargetFrameworks": [
-          "net8.0"
-        ],
-        "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
-        },
-        "frameworks": {
-          "net8.0": {
-            "targetAlias": "net8.0",
-            "projectReferences": {
-              "C:\\Users\\Harol\\Desktop\\ProyectoFinalBackend\\InnovaSystemBussines\\InnovaSystemBussines.csproj": {
-                "projectPath": "C:\\Users\\Harol\\Desktop\\ProyectoFinalBackend\\InnovaSystemBussines\\InnovaSystemBussines.csproj"
-              },
-              "C:\\Users\\Harol\\Desktop\\ProyectoFinalBackend\\InnovaSystemData\\InnovaSystemData.csproj": {
-                "projectPath": "C:\\Users\\Harol\\Desktop\\ProyectoFinalBackend\\InnovaSystemData\\InnovaSystemData.csproj"
-              }
-            }
-          }
-        },
-        "warningProperties": {
-          "warnAsError": [
-            "NU1605"
-          ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
-        }
-      },
-      "frameworks": {
-        "net8.0": {
-          "targetAlias": "net8.0",
-          "dependencies": {
-            "Microsoft.AspNetCore.OpenApi": {
-              "target": "Package",
-              "version": "[8.0.10, )"
-            },
-            "Microsoft.EntityFrameworkCore": {
-              "target": "Package",
-              "version": "[8.0.10, )"
-            },
-            "Microsoft.EntityFrameworkCore.SqlServer": {
-              "target": "Package",
-              "version": "[8.0.10, )"
-            },
-            "Microsoft.EntityFrameworkCore.Tools": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[8.0.10, )"
-            },
-            "Swashbuckle.AspNetCore": {
-              "target": "Package",
-              "version": "[6.6.2, )"
-            }
-          },
-          "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48",
-            "net481"
           ],
-          "assetTargetFallback": true,
-          "warn": true,
           "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.108/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

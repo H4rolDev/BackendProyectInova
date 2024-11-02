@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = InnovaSystemData
-build_property.ProjectDir = C:\Users\Harol\Desktop\ProyectoFinalBackend\InnovaSystemData\
+build_property.ProjectDir = /home/h4ndx/Desktop/InnovaSystem/BackendProyectInova/InnovaSystemData/
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

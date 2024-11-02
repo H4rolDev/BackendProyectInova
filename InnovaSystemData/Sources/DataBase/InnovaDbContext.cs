@@ -136,34 +136,6 @@ namespace InnovaSystemData.Sources.DataBase
                 .HasForeignKey(u => u.id_producto)
                 .IsRequired();
 
-            // Estado -> Compra | uno a muchos
-            modelBuilder.Entity<EstadoTable>()
-                .HasMany<CompraTable>()
-                .WithOne()
-                .HasForeignKey(u => u.id_estado)
-                .IsRequired();
-
-            // Proveedor -> Compra | uno a muchos
-            modelBuilder.Entity<ProveedorTable>()
-                .HasMany<CompraTable>()
-                .WithOne()
-                .HasForeignKey(u => u.id_proveedor)
-                .IsRequired();
-
-            // Producto -> DetalleCompra | uno a muchos
-            modelBuilder.Entity<ProductoTable>()
-                .HasMany<DetalleCompraTable>()
-                .WithOne()
-                .HasForeignKey(u => u.id_producto)
-                .IsRequired();
-
-            // Compra -> DetalleCOmpra | uno a muchos
-            modelBuilder.Entity<CompraTable>()
-                .HasMany<DetalleCompraTable>()
-                .WithOne()
-                .HasForeignKey(u => u.id_compra)
-                .IsRequired();
-
             //TipoProducto -> Categoria | uno a muchos
             modelBuilder.Entity<CategoriaTable>()
                 .HasMany<ProductoTable>()
@@ -181,15 +153,11 @@ namespace InnovaSystemData.Sources.DataBase
         public DbSet<CategoriaTable> categorias { get; set; }
         public DbSet<ClienteTable> clientes { get; set; }
         public DbSet<ClienteDireccionTable> clienteDirecciones { get; set; }
-        public DbSet<CompraTable> compras { get; set; }
         public DbSet<DeliveryTable> deliverys { get; set; }
-        public DbSet<DetalleCompraTable> detalleCompras { get; set; }
         public DbSet<DetalleVentaTable> detalleVentas { get; set; }
-        public DbSet<EstadoTable> estados { get; set; }
         public DbSet<OrdenServicioTecnicoTable> ordenServicioTecnicos { get; set; }
         public DbSet<PersonaTable> personas { get; set; }
         public DbSet<ProductoTable> productos { get; set; }
-        public DbSet<ProveedorTable> proveedores { get; set; }
         public DbSet<RecojoAlmacenTable> recojoAlmacen { get; set; }
         public DbSet<RolTable> roles { get; set; }
         public DbSet<TipoPagoTable> tipoPagos { get; set; }

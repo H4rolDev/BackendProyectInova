@@ -40,15 +40,11 @@ builder.Services.AddCors(
     )
 );
 
-
 builder.Services.AddScoped<IRolService, RolServiceDbImpl>();
 builder.Services.AddScoped<IRolRepository, RolRepositoryImpl>();
 
 builder.Services.AddScoped<ITrabajadorService, TrabajadorServiceDbImpl>();
 builder.Services.AddScoped<ITrabajadorRepository, TrabajadorRepositoryImpl>();
-
-builder.Services.AddScoped<IProveedorService, ProveedorServiceDbImpl>();
-builder.Services.AddScoped<IProveedorRepository, ProveedorRepositoryImpl>();
 
 builder.Services.AddScoped<IOrdenServicioTecnicoService, OrdenServicioTecnicoServiceDbImpl>();
 builder.Services.AddScoped<IOrdenServicioTecnicoRepository, OrdenServicioTecnicoRepositoryImpl>();

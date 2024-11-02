@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "+pPL+vBzqHQ=",
+  "dgSpecHash": "8p6bnQcFfg36Sy353NLrXbBxv9tUFTPybSriaLz2emxirIpwLppTO4983gaHVCW4vXCColDqkTeC9dKU7I5z5Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Harol\\Desktop\\ProyectoFinalBackend\\InnovaSystemBussines\\InnovaSystemBussines.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "/home/h4ndx/Desktop/InnovaSystem/BackendProyectInova/InnovaSystemBussines/InnovaSystemBussines.csproj",
+  "expectedPackageFiles": [
+    "/home/h4ndx/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.8/microsoft.aspnetcore.app.ref.8.0.8.nupkg.sha512"
+  ],
   "logs": []
 }

@@ -43,7 +43,7 @@ namespace InnovaSystem.Controllers.Admin
 
         [HttpGet]
         [Route("{cliente_id}")]
-        public ActionResult<Proveedor> Obtener([FromRoute]int cliente_id)
+        public ActionResult<Cliente> Obtener([FromRoute]int cliente_id)
         {
             try
             {
