@@ -12,6 +12,7 @@ namespace InnovaSystemData.Store.Extentions
         Departamento = rt.departamento,
         Provincia = rt.provincia,
         Distrito = rt.distrito,
+        Estado = true
       };
     }
 

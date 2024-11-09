@@ -12,6 +12,7 @@ namespace InnovaSystemData.Store.Extentions
         correo = rt.Correo,
         clave = rt.clave,
         salt = rt.salt,
+        Estado = true
       };
     }
 

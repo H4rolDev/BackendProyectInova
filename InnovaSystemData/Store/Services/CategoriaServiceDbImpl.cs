@@ -66,5 +66,29 @@ namespace  InnovaSystemData.Store.Services {
             if (r == 1) return;
             else throw new MessageExeption("No se pudo eliminar la Categoria");
         }
+
+        public void CambiarEstado(int id, bool nuevoEstado)
+        {
+            // Busca la state en la base de datos
+            CategoriaTable? state = _db.categorias.FirstOrDefault(r => r.id == id);
+
+            // Verifica si el state existe
+            if (state == null)
+            {
+                throw new MessageExeption("No se encontró la Categoria con el ID proporcionado");
+            }
+
+            // Cambia el estado de la categoria
+            state.estado = nuevoEstado;
+
+            // Guarda los cambios en la base de datos
+            int resultado = _db.SaveChanges();
+
+            // Verifica si la actualización fue exitosa
+            if (resultado != 1)
+            {
+                throw new MessageExeption("No se pudo cambiar el estado del Categoria");
+            }
+        }
     }
 }

@@ -16,6 +16,7 @@ namespace InnovaSystemData.Store.Extentions
         DescripcionServicio = rt.descripcionServicio,
         PrecioUnitario = rt.precioUnitario,
         Total = rt.total,
+        Estado = true
       };
     }
 

@@ -42,7 +42,8 @@ namespace InnovaSystem.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("salarioBase")
-                        .HasColumnType("decimal(18,2)");
+                        .HasPrecision(7, 2)
+                        .HasColumnType("decimal(7,2)");
 
                     b.HasKey("id");
 
@@ -478,10 +479,12 @@ namespace InnovaSystem.Migrations
                         .HasColumnType("int");
 
                     b.Property<decimal>("precioUnitario")
-                        .HasColumnType("decimal(18,2)");
+                        .HasPrecision(7, 2)
+                        .HasColumnType("decimal(7,2)");
 
                     b.Property<decimal>("total")
-                        .HasColumnType("decimal(18,2)");
+                        .HasPrecision(7, 2)
+                        .HasColumnType("decimal(7,2)");
 
                     b.HasKey("id");
 
@@ -582,17 +585,18 @@ namespace InnovaSystem.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("precioVenta")
-                        .HasColumnType("decimal(18,2)");
+                        .HasPrecision(7, 2)
+                        .HasColumnType("decimal(7,2)");
 
                     b.Property<int>("stock")
                         .HasColumnType("int");
 
                     b.Property<int>("utilidadPorcentaje")
-                        .HasPrecision(18, 2)
                         .HasColumnType("int");
 
                     b.Property<decimal>("utilidadPrecioVenta")
-                        .HasColumnType("decimal(18,2)");
+                        .HasPrecision(7, 2)
+                        .HasColumnType("decimal(7,2)");
 
                     b.HasKey("id");
 
@@ -774,11 +778,27 @@ namespace InnovaSystem.Migrations
 
             modelBuilder.Entity("InnovaSystemData.Sources.DataBase.Tables.TrabajadorTable", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ApellidoMaterno")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("ApellidoPaterno")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<int?>("CargoTableid")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("Estado")
+                        .HasColumnType("bit");
 
                     b.Property<DateTime>("FechaFinContrato")
                         .HasColumnType("datetime2");
@@ -786,73 +806,50 @@ namespace InnovaSystem.Migrations
                     b.Property<DateTime>("FechaInicioContrato")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("apellidoMaterno")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("apellidoPaterno")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<bool>("estado")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("id_Persona")
+                    b.Property<int>("Id_Persona")
                         .HasColumnType("int");
 
-                    b.Property<int>("id_Puesto")
-                        .HasColumnType("int");
-
-                    b.Property<string>("nombres")
+                    b.Property<string>("Nombres")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<decimal>("salario")
-                        .HasPrecision(18, 2)
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<int>("PuestoId")
+                        .HasColumnType("int");
 
-                    b.Property<string>("telefono")
+                    b.Property<decimal>("Salario")
+                        .HasPrecision(7, 2)
+                        .HasColumnType("decimal(7,2)");
+
+                    b.Property<string>("Telefono")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
-                    b.HasIndex("id_Persona")
+                    b.HasIndex("CargoTableid");
+
+                    b.HasIndex("Id_Persona")
                         .IsUnique();
+
+                    b.HasIndex("PuestoId");
 
                     b.ToTable("Trabajador");
 
                     b.HasData(
                         new
                         {
-                            id = 1,
+                            Id = 1,
+                            ApellidoMaterno = "Pérez",
+                            ApellidoPaterno = "García",
+                            Estado = true,
                             FechaFinContrato = new DateTime(2024, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FechaInicioContrato = new DateTime(2022, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            apellidoMaterno = "Pérez",
-                            apellidoPaterno = "García",
-                            estado = true,
-                            id_Persona = 1,
-                            id_Puesto = 1,
-                            nombres = "Juan",
-                            salario = 4000.00m,
-                            telefono = "987654321"
-                        },
-                        new
-                        {
-                            id = 2,
-                            FechaFinContrato = new DateTime(2023, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            FechaInicioContrato = new DateTime(2021, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            apellidoMaterno = "López",
-                            apellidoPaterno = "Rodríguez",
-                            estado = true,
-                            id_Persona = 2,
-                            id_Puesto = 2,
-                            nombres = "María",
-                            salario = 1500.00m,
-                            telefono = "912345678"
+                            Id_Persona = 1,
+                            Nombres = "Juan",
+                            PuestoId = 1,
+                            Salario = 4000.00m,
+                            Telefono = "987654321"
                         });
                 });
 
@@ -1038,11 +1035,23 @@ namespace InnovaSystem.Migrations
 
             modelBuilder.Entity("InnovaSystemData.Sources.DataBase.Tables.TrabajadorTable", b =>
                 {
+                    b.HasOne("InnovaSystemData.Sources.DataBase.Tables.CargoTable", null)
+                        .WithMany("Trabajadores")
+                        .HasForeignKey("CargoTableid");
+
                     b.HasOne("InnovaSystemData.Sources.DataBase.Tables.PersonaTable", null)
                         .WithOne()
-                        .HasForeignKey("InnovaSystemData.Sources.DataBase.Tables.TrabajadorTable", "id_Persona")
+                        .HasForeignKey("InnovaSystemData.Sources.DataBase.Tables.TrabajadorTable", "Id_Persona")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("InnovaSystemData.Sources.DataBase.Tables.CargoTable", "Puesto")
+                        .WithMany()
+                        .HasForeignKey("PuestoId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Puesto");
                 });
 
             modelBuilder.Entity("InnovaSystemData.Sources.DataBase.Tables.UsuarioTable", b =>
@@ -1091,6 +1100,11 @@ namespace InnovaSystem.Migrations
                         .HasForeignKey("id_trabajador")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("InnovaSystemData.Sources.DataBase.Tables.CargoTable", b =>
+                {
+                    b.Navigation("Trabajadores");
                 });
 #pragma warning restore 612, 618
         }

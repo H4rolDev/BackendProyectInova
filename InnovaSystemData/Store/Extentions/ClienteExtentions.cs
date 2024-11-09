@@ -15,7 +15,8 @@ namespace InnovaSystemData.Store.Extentions
         Telefono = rt.telefono,
         Correo = rt.correo,
         TipoDocumento = rt.TipoDocumento,
-        NumeroDocumento = rt.NumeroDocumento
+        NumeroDocumento = rt.NumeroDocumento,
+        Estado = true
       };
     }
 

@@ -11,12 +11,12 @@ namespace InnovaSystem.Controllers.Admin
     public class CargoController : ControllerBase
     {
         public readonly ILogger _logger;
-        public readonly ICargoRepository _cargoRepo;
+        public readonly ITrabajadorRepository _trabajadorRepo;
         public CargoController(
-            ICargoRepository cargoRepo,
+            ITrabajadorRepository trabajadorRepo,
             ILogger<CargoController> logger
         ) {
-          _cargoRepo = cargoRepo;
+          _trabajadorRepo = trabajadorRepo;
             _logger = logger;
         }
 
@@ -26,7 +26,7 @@ namespace InnovaSystem.Controllers.Admin
         {
             try
             {
-                List<Cargo> cargos = _cargoRepo.cargo().GetAll();
+                List<Cargo> cargos = _trabajadorRepo.cargo().GetAll();
                 return Ok(cargos);
             }
             catch(MessageExeption ex) {
@@ -47,7 +47,7 @@ namespace InnovaSystem.Controllers.Admin
         {
             try
             {
-                Cargo? cargo = _cargoRepo.cargo().GetById(cargo_id); 
+                Cargo? cargo = _trabajadorRepo.cargo().GetById(cargo_id); 
                 if (cargo == null)
                 {
                     return NotFound();
@@ -73,7 +73,7 @@ namespace InnovaSystem.Controllers.Admin
         {
             try
             {
-                Cargo cargo = _cargoRepo.cargo().Create( (Cargo)body );
+                Cargo cargo = _trabajadorRepo.cargo().Create( (Cargo)body );
                
                 return Ok(cargo);
             }
@@ -96,7 +96,7 @@ namespace InnovaSystem.Controllers.Admin
         {
             try
             {
-                _cargoRepo.cargo().Update(cargo_id, (Cargo)body);
+                _trabajadorRepo.cargo().Update(cargo_id, (Cargo)body);
                 return Ok(new CustomResponse());
             }
             catch(MessageExeption ex) {
@@ -118,7 +118,7 @@ namespace InnovaSystem.Controllers.Admin
         {
             try
             {
-                _cargoRepo.cargo().Delete(cargo_id);
+                _trabajadorRepo.cargo().Delete(cargo_id);
                 return Ok(new CustomResponse());
             }
             catch(MessageExeption ex) {
@@ -130,6 +130,27 @@ namespace InnovaSystem.Controllers.Admin
             {
                 _logger.LogError(
                     $"[CargoController][Eliminar] {ex.Message}\n {ex.StackTrace} ");
+                return StatusCode(500, new CustomResponse(error: true));
+            }
+        }
+
+        [HttpPut]
+        [Route("{cargo_id}/cambiar-estado")]
+        public ActionResult<CustomResponse> CambiarEstado([FromRoute] int cargo_id, [FromBody] bool nuevoEstado)
+        {
+            try
+            {
+                _trabajadorRepo.cargo().CambiarEstado(cargo_id, nuevoEstado);
+                return Ok(new CustomResponse());
+            }
+            catch (MessageExeption ex)
+            {
+                _logger.LogError($"[CargoController][CambiarEstado] {ex.Message}\n {ex.StackTrace}");
+                return StatusCode(500, new CustomResponse(error: true) { Message = ex.Message });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"[CargoController][CambiarEstado] {ex.Message}\n {ex.StackTrace}");
                 return StatusCode(500, new CustomResponse(error: true));
             }
         }

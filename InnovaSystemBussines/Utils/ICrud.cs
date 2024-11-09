@@ -13,5 +13,6 @@ namespace InnovaSystemBussines.Utils
         public T Create(T entity);
         public void Update(int id, T entity);
         public void Delete(int id);
+        void CambiarEstado(int id, bool nuevoEstado);
     }
 }

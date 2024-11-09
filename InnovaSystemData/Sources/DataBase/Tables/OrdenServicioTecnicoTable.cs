@@ -27,8 +27,10 @@ namespace InnovaSystemData.Sources.DataBase.Tables
         [Required]
         public string descripcionServicio { get; set; }
         [Required]
+        [Precision(7,2)]
         public decimal precioUnitario { get; set; }
         [Required]
+        [Precision(7,2)]
         public decimal total { get; set; }
         [Required]
         public bool estado { get; set; }

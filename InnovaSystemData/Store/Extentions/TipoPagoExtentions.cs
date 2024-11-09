@@ -9,6 +9,7 @@ namespace InnovaSystemData.Store.Extentions
         Id = rt.id,
         Nombre = rt.nombres,
         Descripcion = rt.descripcion,
+        Estado = true
       };
     }
 

@@ -20,14 +20,19 @@ namespace InnovaSystemData.Sources.DataBase
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Seed();
-
             // Rol -> Usuario | uno a muchos
             modelBuilder.Entity<RolTable>()
                 .HasMany<UsuarioTable>()
                 .WithOne()
                 .HasForeignKey(u => u.id_rol)
                 .IsRequired();
+
+            // Cargo -> Trabajador | uno a muchos
+            modelBuilder.Entity<TrabajadorTable>()
+                .HasOne(t => t.Puesto)
+                .WithMany()
+                .HasForeignKey(t => t.PuestoId) // Asegúrate de que esté configurado correctamente
+                .OnDelete(DeleteBehavior.Restrict);
 
             // Persona - Usuario | uno a uno
             modelBuilder.Entity<PersonaTable>()
@@ -40,7 +45,7 @@ namespace InnovaSystemData.Sources.DataBase
             modelBuilder.Entity<PersonaTable>()
                 .HasOne<TrabajadorTable>()
                 .WithOne()
-                .HasForeignKey<TrabajadorTable>(u => u.id_Persona)
+                .HasForeignKey<TrabajadorTable>(u => u.Id_Persona)
                 .IsRequired();
 
             // Trababajador -> OrdenServicioTecnico | uno a muchos
@@ -149,8 +154,11 @@ namespace InnovaSystemData.Sources.DataBase
                 .WithOne()
                 .HasForeignKey(u => u.id_marca)
                 .IsRequired();
+
+            modelBuilder.Seed();
         }
         public DbSet<CategoriaTable> categorias { get; set; }
+        public DbSet<CargoTable> cargos { get; set; }
         public DbSet<ClienteTable> clientes { get; set; }
         public DbSet<ClienteDireccionTable> clienteDirecciones { get; set; }
         public DbSet<DeliveryTable> deliverys { get; set; }
@@ -165,6 +173,5 @@ namespace InnovaSystemData.Sources.DataBase
         public DbSet<TrabajadorTable> trabajadores { get; set; }
         public DbSet<VentaTable> ventas { get; set; }
         public DbSet<MarcaTable> marcas { get; set; }
-        public DbSet<CargoTable> cargos { get; set; }
     }
 }

@@ -21,11 +21,12 @@ namespace InnovaSystemData.Sources.DataBase.Tables
         [StringLength(250)]
         public string modelo { get; set; }
         [Required]
+        [Precision(7,2)]
         public decimal precioVenta { get; set; }
         [Required]
+        [Precision(7,2)]
         public decimal utilidadPrecioVenta { get; set; }
         [Required]
-        [Precision(18,2)]
         public int utilidadPorcentaje { get; set; }
         [Required]
         public int stock { get; set; }

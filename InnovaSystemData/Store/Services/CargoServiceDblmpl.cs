@@ -67,5 +67,34 @@ namespace  InnovaSystemData.Store.Services {
             if (r == 1) return;
             else throw new MessageExeption("No se pudo eliminar el Cargo");
         }
+
+        public void CambiarEstado(int id, bool nuevoEstado)
+        {
+            // Busca la cargo en la base de datos
+            CargoTable? cargo = _db.cargos.FirstOrDefault(r => r.id == id);
+
+            // Verifica si el cargo existe
+            if (cargo == null)
+            {
+                throw new MessageExeption("No se encontró el Cargo con el ID proporcionado");
+            }
+
+            // Cambia el estado de la cargo
+            cargo.Estado = nuevoEstado;
+
+            // Guarda los cambios en la base de datos
+            int resultado = _db.SaveChanges();
+
+            // Verifica si la actualización fue exitosa
+            if (resultado != 1)
+            {
+                throw new MessageExeption("No se pudo cambiar el estado del Cargo");
+            }
+        }
+        public List<CargoTable> ObtenerTodosLosCargos()
+        {
+            // Consulta para obtener todos los cargos
+            return _db.cargos.ToList();
+        }
     }
 }

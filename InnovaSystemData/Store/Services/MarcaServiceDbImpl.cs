@@ -39,12 +39,12 @@ namespace  InnovaSystemData.Store.Services {
         }
         public List<Marca> GetAll()
         {
-            List<Marca> marcas = _db.marcas
+            List<Marca> marca = _db.marcas
                 .Where(r => r.estado)
                 .Select<MarcaTable, Marca>(
                     rt => rt.ToModel()
                 ).ToList();
-            return marcas;
+            return marca;
         }
 
         public Marca? GetById(int id)
@@ -65,6 +65,30 @@ namespace  InnovaSystemData.Store.Services {
             int r = _db.SaveChanges();
             if (r == 1) return;
             else throw new MessageExeption("No se pudo eliminar la Marca");
+        }
+
+        public void CambiarEstado(int id, bool nuevoEstado)
+        {
+            // Busca la marca en la base de datos
+            MarcaTable? marca = _db.marcas.FirstOrDefault(r => r.id == id);
+
+            // Verifica si la marca existe
+            if (marca == null)
+            {
+                throw new MessageExeption("No se encontró la Marca con el ID proporcionado");
+            }
+
+            // Cambia el estado de la marca
+            marca.estado = nuevoEstado;
+
+            // Guarda los cambios en la base de datos
+            int resultado = _db.SaveChanges();
+
+            // Verifica si la actualización fue exitosa
+            if (resultado != 1)
+            {
+                throw new MessageExeption("No se pudo cambiar el estado de la Marca");
+            }
         }
     }
 }

@@ -18,6 +18,7 @@ namespace InnovaSystemData.Store.Extentions
         UtilidadPrecioVenta = rt.utilidadPrecioVenta,
         UtilidadPorcentaje = rt.utilidadPorcentaje,
         Garantia = rt.garantia,
+        Estado = true
       };
     }
 

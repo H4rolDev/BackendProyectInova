@@ -12,6 +12,7 @@ namespace InnovaSystemData.Store.Extentions
         PrecioUnitario = rt.precioUnitario,
         Cantidad = rt.cantidad,
         Impuesto = rt.impuestos,
+        Estado = true
       };
     }
 

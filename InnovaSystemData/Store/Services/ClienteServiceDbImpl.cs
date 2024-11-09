@@ -72,5 +72,15 @@ namespace  InnovaSystemData.Store.Services {
             if (r == 1) return;
             else throw new MessageExeption("No se pudo eliminar el Cliente");
         }
+
+        public void CambiarEstado(int id, bool nuevoEstado)
+        {
+            var trabajadorTable = _db.clientes.FirstOrDefault(r => r.id == id);
+            if (trabajadorTable == null) throw new MessageExeption("No se encontró la Marca");
+    
+            trabajadorTable.estado = nuevoEstado;  // Cambiar el estado
+            int result = _db.SaveChanges();
+            if (result != 1) throw new MessageExeption("No se pudo cambiar el estado");
+        }
     }
 }

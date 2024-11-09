@@ -14,6 +14,7 @@ namespace InnovaSystemData.Store.Extentions
         RecojoAlmacenId = rt.id_recojoAlmacen,
         FechaCompra = rt.fechaCompra,
         TotalVenta = rt.totalVenta,
+        Estado = true
       };
     }
 

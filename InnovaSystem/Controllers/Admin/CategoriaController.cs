@@ -134,5 +134,26 @@ namespace InnovaSystem.Controllers.Admin
                 return StatusCode(500, new CustomResponse(error: true));
             }
         }
+
+        [HttpPut]
+        [Route("{categoria_id}/cambiar-estado")]
+        public ActionResult<CustomResponse> CambiarEstado([FromRoute] int categoria_id, [FromBody] bool nuevoEstado)
+        {
+            try
+            {
+                _categoriaRepo.categoria().CambiarEstado(categoria_id, nuevoEstado);
+                return Ok(new CustomResponse());
+            }
+            catch (MessageExeption ex)
+            {
+                _logger.LogError($"[CategoriaController][CambiarEstado] {ex.Message}\n {ex.StackTrace}");
+                return StatusCode(500, new CustomResponse(error: true) { Message = ex.Message });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"[CategoriaController][CambiarEstado] {ex.Message}\n {ex.StackTrace}");
+                return StatusCode(500, new CustomResponse(error: true));
+            }
+        }
     }
 }

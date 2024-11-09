@@ -12,7 +12,8 @@ namespace InnovaSystemData.Store.Extentions
         Nombre = rt.Nombre,
         ApellidoPaterno = rt.Apellidos,
         Email = rt.Correo,
-        Telefono = rt.Telefono
+        Telefono = rt.Telefono,
+        Estado = true
       };
     }
 

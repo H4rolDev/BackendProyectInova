@@ -135,5 +135,34 @@ namespace InnovaSystem.Controllers.Admin
                 return StatusCode(500, new CustomResponse(error: true));
             }
         }
+
+        [HttpPut]
+        [Route("{trabajador_id}/cambiar-estado")]
+        public ActionResult<CustomResponse> CambiarEstado([FromRoute] int trabajador_id, [FromBody] bool nuevoEstado)
+        {
+            try
+            {
+                _trabajadorRepo.trabajador().CambiarEstado(trabajador_id, nuevoEstado);
+                return Ok(new CustomResponse());
+            }
+            catch (MessageExeption ex)
+            {
+                _logger.LogError($"[TrabajadorController][CambiarEstado] {ex.Message}\n {ex.StackTrace}");
+                return StatusCode(500, new CustomResponse(error: true) { Message = ex.Message });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"[TrabajadorController][CambiarEstado] {ex.Message}\n {ex.StackTrace}");
+                return StatusCode(500, new CustomResponse(error: true));
+            }
+        }
+
+        [HttpGet("ObtenerTrabajadoresConPuesto")]
+        public IActionResult ObtenerTrabajadoresConPuesto()
+        {
+            var trabajadores = _trabajadorRepo.ObtenerTrabajadoresConPuesto();
+            return Ok(trabajadores);
+        }
+
     }
 }

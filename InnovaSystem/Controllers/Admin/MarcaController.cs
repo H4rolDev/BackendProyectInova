@@ -134,5 +134,26 @@ namespace InnovaSystem.Controllers.Admin
                 return StatusCode(500, new CustomResponse(error: true));
             }
         }
+
+        [HttpPut]
+        [Route("{marca_id}/cambiar-estado")]
+        public ActionResult<CustomResponse> CambiarEstado([FromRoute] int marca_id, [FromBody] bool nuevoEstado)
+        {
+            try
+            {
+                _marcaRepo.marca().CambiarEstado(marca_id, nuevoEstado);
+                return Ok(new CustomResponse());
+            }
+            catch (MessageExeption ex)
+            {
+                _logger.LogError($"[MarcaController][CambiarEstado] {ex.Message}\n {ex.StackTrace}");
+                return StatusCode(500, new CustomResponse(error: true) { Message = ex.Message });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"[MarcaController][CambiarEstado] {ex.Message}\n {ex.StackTrace}");
+                return StatusCode(500, new CustomResponse(error: true));
+            }
+        }
     }
 }

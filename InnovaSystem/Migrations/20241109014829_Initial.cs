@@ -21,7 +21,7 @@ namespace InnovaSystem.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     descripcion = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    salarioBase = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    salarioBase = table.Column<decimal>(type: "decimal(7,2)", precision: 7, scale: 2, nullable: false),
                     Estado = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
@@ -179,9 +179,9 @@ namespace InnovaSystem.Migrations
                     imagen = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     descripcion = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
                     modelo = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
-                    precioVenta = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    utilidadPrecioVenta = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    utilidadPorcentaje = table.Column<int>(type: "int", precision: 18, scale: 2, nullable: false),
+                    precioVenta = table.Column<decimal>(type: "decimal(7,2)", precision: 7, scale: 2, nullable: false),
+                    utilidadPrecioVenta = table.Column<decimal>(type: "decimal(7,2)", precision: 7, scale: 2, nullable: false),
+                    utilidadPorcentaje = table.Column<int>(type: "int", nullable: false),
                     stock = table.Column<int>(type: "int", nullable: false),
                     garantia = table.Column<int>(type: "int", nullable: false),
                     estado = table.Column<bool>(type: "bit", nullable: false)
@@ -241,25 +241,37 @@ namespace InnovaSystem.Migrations
                 name: "Trabajador",
                 columns: table => new
                 {
-                    id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    id_Persona = table.Column<int>(type: "int", nullable: false),
-                    id_Puesto = table.Column<int>(type: "int", nullable: false),
-                    nombres = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    apellidoPaterno = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    apellidoMaterno = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Id_Persona = table.Column<int>(type: "int", nullable: false),
+                    PuestoId = table.Column<int>(type: "int", nullable: false),
+                    Nombres = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    ApellidoPaterno = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    ApellidoMaterno = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     FechaInicioContrato = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FechaFinContrato = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    salario = table.Column<decimal>(type: "decimal(18,2)", precision: 18, scale: 2, nullable: false),
-                    telefono = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    estado = table.Column<bool>(type: "bit", nullable: false)
+                    Salario = table.Column<decimal>(type: "decimal(7,2)", precision: 7, scale: 2, nullable: false),
+                    Telefono = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Estado = table.Column<bool>(type: "bit", nullable: false),
+                    CargoTableid = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Trabajador", x => x.id);
+                    table.PrimaryKey("PK_Trabajador", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Trabajador_persona_id_Persona",
-                        column: x => x.id_Persona,
+                        name: "FK_Trabajador_Cargo_CargoTableid",
+                        column: x => x.CargoTableid,
+                        principalTable: "Cargo",
+                        principalColumn: "id");
+                    table.ForeignKey(
+                        name: "FK_Trabajador_Cargo_PuestoId",
+                        column: x => x.PuestoId,
+                        principalTable: "Cargo",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Trabajador_persona_Id_Persona",
+                        column: x => x.Id_Persona,
                         principalTable: "persona",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
@@ -308,8 +320,8 @@ namespace InnovaSystem.Migrations
                     horaInicio = table.Column<TimeSpan>(type: "time", nullable: false),
                     horaFin = table.Column<TimeSpan>(type: "time", nullable: false),
                     descripcionServicio = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    precioUnitario = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    total = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    precioUnitario = table.Column<decimal>(type: "decimal(7,2)", precision: 7, scale: 2, nullable: false),
+                    total = table.Column<decimal>(type: "decimal(7,2)", precision: 7, scale: 2, nullable: false),
                     estado = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
@@ -319,7 +331,7 @@ namespace InnovaSystem.Migrations
                         name: "FK_ordenServicioTecnico_Trabajador_id_Trabajador",
                         column: x => x.id_Trabajador,
                         principalTable: "Trabajador",
-                        principalColumn: "id",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_ordenServicioTecnico_clientes_id_cliente",
@@ -351,7 +363,7 @@ namespace InnovaSystem.Migrations
                         name: "FK_ventas_Trabajador_id_trabajador",
                         column: x => x.id_trabajador,
                         principalTable: "Trabajador",
-                        principalColumn: "id",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_ventas_clientes_id_cliente",
@@ -474,12 +486,8 @@ namespace InnovaSystem.Migrations
 
             migrationBuilder.InsertData(
                 table: "Trabajador",
-                columns: new[] { "id", "FechaFinContrato", "FechaInicioContrato", "apellidoMaterno", "apellidoPaterno", "estado", "id_Persona", "id_Puesto", "nombres", "salario", "telefono" },
-                values: new object[,]
-                {
-                    { 1, new DateTime(2024, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2022, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), "Pérez", "García", true, 1, 1, "Juan", 4000.00m, "987654321" },
-                    { 2, new DateTime(2023, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2021, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "López", "Rodríguez", true, 2, 2, "María", 1500.00m, "912345678" }
-                });
+                columns: new[] { "Id", "ApellidoMaterno", "ApellidoPaterno", "CargoTableid", "Estado", "FechaFinContrato", "FechaInicioContrato", "Id_Persona", "Nombres", "PuestoId", "Salario", "Telefono" },
+                values: new object[] { 1, "Pérez", "García", null, true, new DateTime(2024, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2022, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, "Juan", 1, 4000.00m, "987654321" });
 
             migrationBuilder.InsertData(
                 table: "clientes",
@@ -560,10 +568,20 @@ namespace InnovaSystem.Migrations
                 column: "id_marca");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Trabajador_id_Persona",
+                name: "IX_Trabajador_CargoTableid",
                 table: "Trabajador",
-                column: "id_Persona",
+                column: "CargoTableid");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Trabajador_Id_Persona",
+                table: "Trabajador",
+                column: "Id_Persona",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Trabajador_PuestoId",
+                table: "Trabajador",
+                column: "PuestoId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_users_id_Persona",
@@ -608,9 +626,6 @@ namespace InnovaSystem.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Cargo");
-
-            migrationBuilder.DropTable(
                 name: "detalleVenta");
 
             migrationBuilder.DropTable(
@@ -648,6 +663,9 @@ namespace InnovaSystem.Migrations
 
             migrationBuilder.DropTable(
                 name: "tipoPago");
+
+            migrationBuilder.DropTable(
+                name: "Cargo");
 
             migrationBuilder.DropTable(
                 name: "persona");

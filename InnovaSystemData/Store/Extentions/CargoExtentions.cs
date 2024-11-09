@@ -9,7 +9,8 @@ namespace InnovaSystemData.Store.Extentions
         Id = rt.id,
         Nombre = rt.nombre,
         Descripcion = rt.descripcion,
-        SalarioBase = rt.salarioBase
+        SalarioBase = rt.salarioBase,
+        Estado = true
       };
     }
 

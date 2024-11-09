@@ -78,34 +78,47 @@ namespace InnovaSystemData.Sources.DataBase.Seeds
                     estado = true
                 }
             );
+            modelBuilder.Entity<CargoTable>().HasData(
+                new CargoTable
+                {
+                    id = 1,
+                    nombre = "Gerente",
+                    descripcion = "Encargado de la empresa.",
+                    salarioBase = 4000m,
+                    Estado = true
+                },
+                new CargoTable
+                {
+                    id = 2,
+                    nombre = "Vendedor",
+                    descripcion = "Vende en tienda.",
+                    salarioBase = 2000m,
+                    Estado = true
+                },
+                new CargoTable
+                {
+                    id = 3,
+                    nombre = "Servicio Tecnico",
+                    descripcion = "Tecnico en computacion.",
+                    salarioBase = 2000m,
+                    Estado = true
+                }
+            );
+            
             modelBuilder.Entity<TrabajadorTable>().HasData(
                 new TrabajadorTable
                 {
-                    id = 1,
-                    id_Persona = 1,
-                    nombres = "Juan",
-                    apellidoPaterno = "García",
-                    apellidoMaterno = "Pérez",
+                    Id = 1,
+                    Id_Persona = 1,
+                    PuestoId = 1, // Asegúrate de que el cargo con ID 1 exista en CargoTable
+                    Nombres = "Juan",
+                    ApellidoPaterno = "García",
+                    ApellidoMaterno = "Pérez",
                     FechaInicioContrato = new DateTime(2022, 01, 15),
                     FechaFinContrato = new DateTime(2024, 01, 15),
-                    id_Puesto = 1,
-                    salario = 4000.00m,
-                    telefono = "987654321",
-                    estado = true
-                },
-                new TrabajadorTable
-                {
-                    id = 2,
-                    id_Persona = 2,
-                    nombres = "María",
-                    apellidoPaterno = "Rodríguez",
-                    apellidoMaterno = "López",
-                    FechaInicioContrato = new DateTime(2021, 05, 01),
-                    FechaFinContrato = new DateTime(2023, 05, 01),
-                    id_Puesto = 2,
-                    salario = 1500.00m,
-                    telefono = "912345678",
-                    estado = true
+                    Salario = 4000.00m,
+                    Telefono = "987654321",
+                    Estado = true
                 }
             );
             modelBuilder.Entity<UsuarioTable>().HasData(
@@ -154,32 +167,7 @@ namespace InnovaSystemData.Sources.DataBase.Seeds
                 }
             );
 
-            modelBuilder.Entity<CargoTable>().HasData(
-                new CargoTable
-                {
-                    id = 1,
-                    nombre = "Gerente",
-                    descripcion = "Encargado de la empresa.",
-                    salarioBase = 4000m,
-                    Estado = true
-                },
-                new CargoTable
-                {
-                    id = 2,
-                    nombre = "Vendedor",
-                    descripcion = "Vende en tienda.",
-                    salarioBase = 2000m,
-                    Estado = true
-                },
-                new CargoTable
-                {
-                    id = 3,
-                    nombre = "Servicio Tecnico",
-                    descripcion = "Tecnico en computacion.",
-                    salarioBase = 2000m,
-                    Estado = true
-                }
-            );
+            
             modelBuilder.Entity<ClienteDireccionTable>().HasData(
                 new ClienteDireccionTable
                 {

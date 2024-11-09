@@ -19,9 +19,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var connStr = builder.Configuration
-    .GetValue<string>("ConnectionStrings:InnovaProductionDb");
+    .GetValue<string>("ConnectionStrings:InnovaDocker");
 
-builder.Services.AddDbContext<InnovaDbContext>(
+builder.Services.AddDbContext<InnovaSystemData.Sources.DataBase.InnovaDbContext>(
     // Connect to SqlServer
     (config) => config.UseSqlServer(
         connStr, b => b.MigrationsAssembly("InnovaSystem"))
@@ -34,8 +34,8 @@ builder.Services.AddCors(
     (conf) => conf.AddDefaultPolicy( policy => 
         policy.AllowAnyHeader()
             .AllowAnyMethod()
-            .AllowAnyOrigin()
-            .WithMethods()
+            // .AllowAnyOrigin()
+            // .WithMethods()
             .WithOrigins(web, web2)
     )
 );
@@ -65,7 +65,6 @@ builder.Services.AddScoped<IProductoService, ProductoServiceDbImpl>();
 builder.Services.AddScoped<IProductoRepository, ProductoRepositoryImpl>();
 
 builder.Services.AddScoped<ICargoService, CargoServiceDbImpl>();
-builder.Services.AddScoped<ICargoRepository, CargoRepositoryImpl>();
 
 builder.Services.AddScoped<IDetalleVentaService, DetalleVentaServiceDbImpl>();
 builder.Services.AddScoped<IDetalleVentaRepository, DetalleVentaRepositoryImpl>();

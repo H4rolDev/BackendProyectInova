@@ -18,7 +18,6 @@ namespace InnovaSystemBussines.Store.Models{
                 Nombre = rb.Nombre,
                 Descripcion = rb.Descripcion,
                 SalarioBase = rb.SalarioBase,
-                Estado = true,
             };
         }
     }
